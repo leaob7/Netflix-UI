@@ -1,0 +1,1 @@
+export const addMovies = (state) => ({ type: 'ADD_MOVIES', state })
