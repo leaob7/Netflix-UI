@@ -1,1 +1,1 @@
-export const addMovies = (state) => ({ type: 'ADD_MOVIES', state })
+export const addMovies = (payload) => ({ type: 'ADD_MOVIES', payload })

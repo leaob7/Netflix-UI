@@ -1,11 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addMovies } from '../actions/index';
 
 class InicialPage extends React.Component {
   render() {
     return (
-      <>InicialPage</>
+      <>Inicial Page</>
     )
   }
 }
 
-export default InicialPage;
+const mapDispatchToProps = (dispatch) => ({
+  dispatchMovies: (payload) => dispatch(addMovies(payload))});
+
+export default connect(null, mapDispatchToProps)(InicialPage);
+

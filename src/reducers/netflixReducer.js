@@ -1,7 +1,5 @@
 const INITIAL_STATE = {
-  state: {
-    movies: [],
-  },
+    movies: []
 }
 
 function NetflixReducer(state= INITIAL_STATE, action) {
@@ -9,7 +7,7 @@ function NetflixReducer(state= INITIAL_STATE, action) {
     case 'ADD_MOVIES':
       return {
         ...state,
-        movies: [...state.movies, action.state]
+        movies: [...state.movies, action.payload],
       }
     default: 
       return state;
