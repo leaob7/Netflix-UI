@@ -23,7 +23,7 @@ function InitialTopBar () {
         <AppBar position="static" color='transparent' className={ classes.root }>
           <Toolbar variant="regular">
             <Typography className={ classes.logo }>
-              NETFLIX
+              N E T F L I X
             </Typography>
           </Toolbar>
         </AppBar>
