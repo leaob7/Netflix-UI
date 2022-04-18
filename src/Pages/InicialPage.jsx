@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addMovies } from '../actions/index';
+import InitialTopBar from '../Components/InicialTopBar';
+import InitialUserBody from '../Components/InicialUsersBody';
 
 class InicialPage extends React.Component {
   render() {
     return (
-      <>Inicial Page</>
+      <>
+        <InitialTopBar />
+        <InitialUserBody />
+      </>
     )
   }
 }
