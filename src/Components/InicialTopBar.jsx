@@ -7,10 +7,12 @@ const useStyles = makeStyles((theme) => ({
     height: 70
   },
   logo: {
-    paddingLeft: 20,
+    paddingLeft: 30,
+    paddingTop: 10,
     color: theme.palette.primary.main,
     fontWeight: 'bold',
-    fontFamily: ''
+    fontFamily: 'netflix',
+    fontSize: '2vw'
   },
 }));
 
@@ -19,8 +21,8 @@ function InitialTopBar () {
 
     return (
         <AppBar position="static" color='transparent' className={ classes.root }>
-          <Toolbar variant="dense">
-            <Typography variant='h5' className={ classes.logo }>
+          <Toolbar variant="regular">
+            <Typography className={ classes.logo }>
               NETFLIX
             </Typography>
           </Toolbar>

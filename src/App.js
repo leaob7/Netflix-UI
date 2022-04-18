@@ -2,8 +2,19 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import InicialPage from './Pages/InicialPage';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import { netflixFont as netflix } from './fonts/muiFonts';
 
 const theme = createTheme({
+  typography: {
+    fontFamily: 'Arial, netflix',
+  },
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        '@font-face': [netflix],
+      }
+    }
+  },
   palette: {
     primary: {
       main: '#ba000d',
