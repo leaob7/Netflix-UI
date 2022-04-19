@@ -2,9 +2,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
   AppBar,
   Toolbar,
-  IconButton,
   Typography,
   InputBase,
+  Button,
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { Link } from 'react-router-dom';
@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
   topBar: {
     minHeight: '1vh',
     display: 'flex',
+    justifyContent: 'space-between',
   },
   topNav: {
     display: 'flex',
@@ -26,15 +27,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   title: {
+    display: 'flex',
     paddingLeft: 30,
     paddingTop: 10,
-    display: 'none',
     fontWeight: 'bold',
     fontFamily: 'netflix',
     fontSize: '2vw',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
   },
   link: {
     paddingLeft: 30,
@@ -42,26 +40,17 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'netflix',
     fontSize: 10,
     color: 'GrayText',
+    '&:hover': {
+      color: 'white',
+    }
   },
   search: {
     display: 'flex',
-    marginRight: 20,
-    borderRadius: 3,
-    marginLeft: 0,
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
   },
   searched: {
+    display: 'flex',
     border: 'solid white 0.5px',
-    marginRight: 20,
     borderRadius: 3,
-    marginLeft: 0,
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
   },
   searchIcon: {
     height: '1.5vh',
@@ -135,13 +124,12 @@ function MainTopBar() {
 
           <div className={ search ? classes.searched : classes.search }>
             
-            <IconButton
-              onClick={ () => setSearch(!search) }
-              edge="end"         
+            <Button
+              onClick={ () => setSearch(!search) }       
             >
               <SearchIcon className={ classes.searchIcon } />
-              
-            </IconButton>
+
+            </Button>
 
             { search && 
               <InputBase
@@ -152,14 +140,14 @@ function MainTopBar() {
                 }}
               />}
 
+            <img
+              src="https://avatars.githubusercontent.com/u/6759280?v=4"
+              className={classes.avatar}
+              alt="avatar"
+            />
 
           </div>
 
-          <img
-            src="https://avatars.githubusercontent.com/u/6759280?v=4"
-            className={classes.avatar}
-            alt="avatar"
-          />
 
 
         </Toolbar>
