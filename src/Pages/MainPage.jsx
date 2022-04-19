@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MoviesRequest from '../utils/MoviesApiRequest';
+import MainTopBar from '../Components/MainPage/MainTopBar';
+import MainBody from '../Components/MainPage/MainBody';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
