@@ -1,5 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, IconButton, Typography, InputBase } from '@material-ui/core';
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  InputBase,
+} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { useState } from 'react';
 
@@ -7,11 +13,18 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
+  topBar: {
+    minHeight: '1vh',
+    display: 'flex',
+  },
+  topNav: {
+    display: 'flex',
+    flexWrap: 'nowrap',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
-    flexGrow: 1,
     paddingLeft: 30,
     paddingTop: 10,
     display: 'none',
@@ -22,19 +35,35 @@ const useStyles = makeStyles((theme) => ({
       display: 'block',
     },
   },
+  link: {
+    paddingLeft: 30,
+    paddingTop: 10,
+    fontFamily: 'netflix',
+    fontSize: 10,
+    color: 'GrayText',
+  },
   search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
+    display: 'flex',
+    marginRight: 20,
+    borderRadius: 3,
     marginLeft: 0,
-    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(1),
+      width: 'auto',
+    },
+  },
+  searched: {
+    border: 'solid white 0.5px',
+    marginRight: 20,
+    borderRadius: 3,
+    marginLeft: 0,
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
       width: 'auto',
     },
   },
   searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
+    height: '1.5vh',
     color: 'white',
     pointerEvents: 'none',
     display: 'flex',
@@ -46,11 +75,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.dark,
   },
   inputInput: {
+    marginRight: 10,
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(0)}px)`,
     transition: theme.transitions.create('width'),
+    color: 'GrayText',
     width: '100%',
-    height: '2vh',
     [theme.breakpoints.up('sm')]: {
       width: '12ch',
       '&:focus': {
@@ -58,6 +88,11 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  avatar: {
+    height: 40,
+    width: 40,
+    borderRadius: 5,
+  }
 }));
 
 function MainTopBar() {
@@ -65,15 +100,32 @@ function MainTopBar() {
   const classes = useStyles();
 
   return (
-      <AppBar position="static"  color='transparent'>
-        <Toolbar>
+      <AppBar position="fixed"  color='transparent'>
+        <Toolbar className={ classes.topBar }>
 
-        <Typography className={ classes.title } color='primary'>
-          N E T F L I X
-        </Typography>
+        <div className={ classes.topNav }>
 
-          <div >
+          <Typography className={ classes.title } color='primary'>
+            N E T F L I X
+          </Typography>
 
+          <Typography className={ classes.link } color='primary'>
+            Series
+          </Typography>
+
+          <Typography className={ classes.link } color='primary'>
+            Filmes
+          </Typography>
+
+          <Typography className={ classes.link } color='primary'>
+            Minha lista
+          </Typography>
+
+        </div>
+
+
+          <div className={ search ? classes.searched : classes.search }>
+            
             <IconButton
               onClick={ () => setSearch(!search) }
               edge="end"         
@@ -81,16 +133,24 @@ function MainTopBar() {
               <SearchIcon className={ classes.searchIcon } />
             </IconButton>
 
-            { search && <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              // inputProps={{ 'aria-label': 'search' }}
-            />}
+            { search && 
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+              />}
+
 
           </div>
+
+          <img
+            src="https://avatars.githubusercontent.com/u/6759280?v=4"
+            className={classes.avatar}
+            alt="avatar"
+          />
+
 
         </Toolbar>
       </AppBar>
