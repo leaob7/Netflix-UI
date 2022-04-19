@@ -7,6 +7,7 @@ import {
   InputBase,
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
@@ -105,21 +106,29 @@ function MainTopBar() {
 
         <div className={ classes.topNav }>
 
-          <Typography className={ classes.title } color='primary'>
-            N E T F L I X
-          </Typography>
+          <Link to="/browse" style={{ textDecoration: 'none' }}>
+            <Typography className={ classes.title } color='primary'>
+              N E T F L I X
+            </Typography>
+          </Link>
 
-          <Typography className={ classes.link } color='primary'>
-            Series
-          </Typography>
+          <Link to="/browse/series" style={{ textDecoration: 'none' }}>
+            <Typography className={ classes.link } color='primary'>
+              Series
+            </Typography>
+          </Link>
 
-          <Typography className={ classes.link } color='primary'>
-            Filmes
-          </Typography>
+          <Link to="/browse/movies" style={{ textDecoration: 'none' }}>
+            <Typography className={ classes.link } color='primary'>
+              Filmes
+            </Typography>
+          </Link>
 
-          <Typography className={ classes.link } color='primary'>
-            Minha lista
-          </Typography>
+          <Link to="/my-list" style={{ textDecoration: 'none' }}>
+            <Typography className={ classes.link } color='primary'>
+              Minha lista
+            </Typography>
+          </Link>
 
         </div>
 
@@ -131,6 +140,7 @@ function MainTopBar() {
               edge="end"         
             >
               <SearchIcon className={ classes.searchIcon } />
+              
             </IconButton>
 
             { search && 
