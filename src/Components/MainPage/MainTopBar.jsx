@@ -148,8 +148,6 @@ function MainTopBar() {
 
           </div>
 
-
-
         </Toolbar>
       </AppBar>
   )
