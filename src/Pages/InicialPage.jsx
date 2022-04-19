@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addMovies } from '../actions/index';
-import InitialTopBar from '../Components/InicialTopBar';
-import InitialUserBody from '../Components/InicialUsersBody';
+import InitialTopBar from '../Components/InicialPage/InicialTopBar';
+import InitialUserBody from '../Components/InicialPage/InicialUsersBody';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +17,7 @@ function InicialPage () {
   const classes = useStyles();
 
     return (
-      <div maxWidth='false' className={ classes.root }>
+      <div className={ classes.root }>
         <InitialTopBar />
         <InitialUserBody />
       </div>
