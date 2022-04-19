@@ -53,7 +53,7 @@ function InitialUserBody () {
           Quem está assistindo ?
         </Typography>
 
-        <Link to="/browser" className={ classes.link }>
+        <Link to="/browse" className={ classes.link }>
           
           <Card className={ classes.card }>
             <CardActionArea>

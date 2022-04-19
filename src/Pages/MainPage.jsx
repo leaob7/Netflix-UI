@@ -1,27 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MoviesRequest from '../utils/MoviesApiRequest';
+import { makeStyles } from '@material-ui/core/styles';
 
-class MainPage extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      latestMovies: []
-    }
-  }
+const useStyles = makeStyles((theme) => ({
+  root: {
+    background: theme.palette.primary.dark,
+    height: '100vh',
+  },
+}));
 
-  getRequest = async (state, request) => {
+const moviesRequest = new MoviesRequest();
+
+function MainPage() {
+  const classes = useStyles();
+  const [latestMovies, setLatestMovies] = useState([]);
+
+  const getRequest = async (request) => {
     const response = await request;
-    this.setState({ [state]: response.results })
+    setLatestMovies(response.results);
   }
 
-  async componentDidMount() {
-    await this.getRequest('latestMovies', MoviesRequest.getPopular());
-  }
-  render() {
+  useEffect(() => {
+    const fetchLatest = async () => {
+      await getRequest(moviesRequest.getPopular())
+    }
+
+    fetchLatest()
+  }, [])
+
     return (
-      <>MainPage</>
+      <div className={ classes.root }>
+        <MainTopBar />
+        <MainBody />
+      </div>
     )
-  }
 }
 
 export default MainPage;

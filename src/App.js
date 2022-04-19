@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import InicialPage from './Pages/InicialPage';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { netflixFont as netflix } from './fonts/muiFonts';
+import MainPage from './Pages/MainPage';
 
 const theme = createTheme({
   typography: {
@@ -29,7 +30,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Routes>
         <Route path="/" element={ <InicialPage /> }/>
-        <Route path="/browse" />
+        <Route path="/browse" element={ <MainPage /> }/>
         <Route path="/browse:id" />
         <Route path="/my-list" />
       </Routes>
