@@ -6,6 +6,7 @@ import {
   CardMedia,
   Typography,
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,6 +15,13 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     margin: '20vh',
+  },
+  link: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textDecoration: 'none',
   },
   card: {
     display: 'flex',
@@ -44,7 +52,9 @@ function InitialUserBody () {
         <Typography className={ classes.title }>
           Quem está assistindo ?
         </Typography>
-        
+
+        <Link to="/browser" className={ classes.link }>
+          
           <Card className={ classes.card }>
             <CardActionArea>
 
@@ -57,9 +67,12 @@ function InitialUserBody () {
             </CardActionArea>
           </Card>
 
-        <Typography style={{ color: "GrayText", fontSize: '1.5vw', }}>
-          Convidado
-        </Typography>
+          <Typography style={{ color: "GrayText", fontSize: '1.5vw', }}>
+            Convidado
+          </Typography>
+        
+        </Link>
+        
       
       </div>
     )
