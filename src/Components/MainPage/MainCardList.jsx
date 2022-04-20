@@ -3,8 +3,8 @@ import { Grid  } from '@material-ui/core';
 import MidiaCard from './MidiaCard';
 
 
-function MainCardList() {
-
+function MainCardList({ movies }) {
+  const { popular } = movies;
   return (
     <Grid
     container
@@ -12,7 +12,11 @@ function MainCardList() {
     alignItems="center"
     >
 
-      <MidiaCard />
+      { popular.slice(0, 10).map((movie) => (
+        
+        <MidiaCard key={movie.id} movie={movie} />
+
+      )) }
 
     </Grid>
   );

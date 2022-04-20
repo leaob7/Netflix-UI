@@ -10,10 +10,6 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     width: '100%' 
   },
-  paper: {
-    height: 140,
-    width: 100,
-  },
   card: {
     height: '13vh',
     width: '20vh',
@@ -21,15 +17,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MainBody() {
+function MainBody({ MoviesData }) {
   const classes = useStyles();
 
   return (
     <Grid container className={classes.root}>
 
-      <MainBanner />
+      <MainBanner /> 
 
-      <MainCardList />
+      <MainCardList movies={ MoviesData } />
 
     </Grid>
   )
