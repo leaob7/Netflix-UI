@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import MainBanner from './MainBanner';
+import MainCardList from './MainCardList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,17 +29,7 @@ function MainBody() {
 
       <MainBanner />
 
-      <Grid
-        container
-        direction="row"
-        alignItems="center"
-        style={{ color: 'white' }}
-      >
-          <img  src='' alt='card' className={classes.card} />
-          <img  src='' alt='card' className={classes.card} />
-          {/* Component List -> component card */}
-
-      </Grid>
+      <MainCardList />
 
     </Grid>
   )

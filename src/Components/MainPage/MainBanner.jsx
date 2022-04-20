@@ -26,14 +26,8 @@ function MainBanner() {
       alignItems="center"
       className={classes.banner}
     >
-      {/* <div style={{ height: '100%', width: '100%' }}>
-        <Typography>Title</Typography>
-        <Typography>Sinopse</Typography>
-        <Typography>Play Button</Typography>
-        <Typography>Info Button</Typography>
-      </div> */}
       <BannerCard />
-
+      
     </Grid>
   )
 }
