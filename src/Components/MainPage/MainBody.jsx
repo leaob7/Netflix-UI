@@ -8,12 +8,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     height: '100%',
-    width: '100%' 
-  },
-  card: {
-    height: '13vh',
-    width: '20vh',
-    margin: 10,
+    width: '100%',
+    overflow: 'hidden'
   },
 }));
 
@@ -25,7 +21,11 @@ function MainBody({ MoviesData }) {
 
       <MainBanner /> 
 
-      <MainCardList movies={ MoviesData } />
+      <MainCardList movies={ MoviesData.popular } textField="Em alta" />
+
+      <MainCardList movies={ MoviesData.nowPlaying } textField="Lançamentos" />
+
+      <MainCardList movies={ MoviesData.topRated } textField="Filmes premiados" />
 
     </Grid>
   )

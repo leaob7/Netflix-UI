@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardMedia } from '@material-ui/core';
+import { Card, CardMedia, CardActions, IconButton } from '@material-ui/core';
+import { PlayCircleOutline, ControlPoint, ExpandMore } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '13vh',
-    width: '20vh',
-    margin: 10,
+    width: '25vh',
+    marginLeft: 15,
+    marginRigth: 15,
+    marginTop: 30,
+    marginBottom: 30,
+    transition: '1s'
+  },
+  rootHover: {
+    height: '25vh',
+    width: '30vh',
+    marginLeft: 15,
+    marginRigth: 15,
+    transition: '1s'
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -20,21 +32,59 @@ const useStyles = makeStyles((theme) => ({
     // button spin
   },
   media: {
-    height: '13vh',
-    width: '20vh',
+    height: '100%',
+    width: '100%',
+    backgroundSize: '25vh 14vh',
+    transition: '1s'
   },
+  mediaHover: {
+    height: '15vh',
+    width: '100%',
+    backgroundSize: '31vh 26vh', 
+    transition: '1s'
+  },
+  cardActions: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    height: '100%',
+    padding: 2,
+    backgroundColor: 'rgb(25, 25, 25)',
+  },
+  cardButtons: {
+    color: 'white',
+  }
 }));
 
-function MidiaCard() {
+function MidiaCard({ movie }) {
   const classes = useStyles();
+  const [cardStyle, setCardStyle] = useState(false);
 
   return (
-    <Card className={ classes.root }>
+    <Card
+      className={ cardStyle ? classes.rootHover : classes.root }
+      onMouseEnter={ () => setCardStyle(!cardStyle)}
+      onMouseLeave={ () => setCardStyle(!cardStyle)}
+    >
 
-      <CardMedia 
-      image="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTQOtj4pUXP9fzyUz5gVYkZt3_1Z1gCNsGEPmT5snx_Xxhp0UNo"
-      className={ classes.media }
+      <CardMedia
+      style={ { backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.poster_path})`}}
+      className={ cardStyle ? classes.mediaHover : classes.media }
       />
+
+      <CardActions className={ classes.cardActions } disableSpacing>
+          <IconButton
+          className={classes.cardButtons}
+          aria-label="Assistir"
+          >
+            <PlayCircleOutline />
+          </IconButton>
+
+          <IconButton className={classes.cardButtons} aria-label="Adicionar á minha lista">
+            <ControlPoint />
+          </IconButton>
+
+            <ExpandMore className={classes.cardButtons}/>
+        </CardActions>
 
     </Card>
   );

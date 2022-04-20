@@ -1,23 +1,32 @@
 import React from 'react';
-import { Grid  } from '@material-ui/core';
+import { Grid, Typography  } from '@material-ui/core';
 import MidiaCard from './MidiaCard';
+import { NavigateBeforeSharp, NavigateNextSharp } from '@material-ui/icons';
 
+function MainCardList({ movies, textField }) {
 
-function MainCardList({ movies }) {
-  const { popular } = movies;
   return (
     <Grid
-    container
-    direction="row"
-    alignItems="center"
+    style={{ display: 'flex', flexDirection: 'column' }}
     >
 
-      { popular.slice(0, 10).map((movie) => (
-        
-        <MidiaCard key={movie.id} movie={movie} />
+      <Typography variant='h5' color='primary'>{`${textField}`}</Typography>
 
-      )) }
+      <Grid
+        style={{ display: 'flex', alignItems: "center" }}
+      >
 
+        <NavigateBeforeSharp color='primary'/>
+
+        { movies.slice(0, 10).map((movie) => (
+          
+          <MidiaCard key={movie.id} movie={movie} />
+          
+          )) }
+
+        <NavigateNextSharp color='primary' />
+      
+      </Grid>
     </Grid>
   );
 }

@@ -4,19 +4,17 @@ import clsx from 'clsx';
 import { Card, Button, Typography, CardActions } from '@material-ui/core';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import PlayArrowSharpIcon from '@material-ui/icons/PlayArrowSharp';
-// import CardContent from '@material-ui/core/CardContent';
-// import Collapse from '@material-ui/core/Collapse';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
-    width: '100vw',
+    width: '100%',
     backgroundSize: '100vw 100vh',
     backgroundRepeat: 'no-repeat',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
   expand: {
     transform: 'rotate(0deg)',
