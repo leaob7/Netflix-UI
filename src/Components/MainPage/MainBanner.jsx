@@ -1,5 +1,6 @@
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import BannerCard from './BannerCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -9,9 +10,8 @@ const useStyles = makeStyles((theme) => ({
   },
   banner:{
       color: 'white', 
-      border: 'solid white 1px',
       height: '80%',
-      width: '100%' 
+      width: '100%',
     },
 }));
 
@@ -26,12 +26,13 @@ function MainBanner() {
       alignItems="center"
       className={classes.banner}
     >
-      <div style={{ height: '100%', width: '100%' }}>
+      {/* <div style={{ height: '100%', width: '100%' }}>
         <Typography>Title</Typography>
         <Typography>Sinopse</Typography>
         <Typography>Play Button</Typography>
         <Typography>Info Button</Typography>
-      </div>
+      </div> */}
+      <BannerCard />
 
     </Grid>
   )
