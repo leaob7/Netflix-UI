@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
     width: '100vw',
-    backgroundImage: `url(${"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTQOtj4pUXP9fzyUz5gVYkZt3_1Z1gCNsGEPmT5snx_Xxhp0UNo"})`,
     backgroundSize: '100vw 100vh',
     backgroundRepeat: 'no-repeat',
     display: 'flex',
@@ -30,11 +29,17 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(0deg)',
     // button spin
   },
+  btnDiv: {
+    marginBottom: '20vh',
+    paddingLeft: theme.spacing(4),
+  },
   bannerTitle: {
-    paddingLeft: theme.spacing(1),
-    fontSize: '15vw',
-    color: 'white',
+    paddingLeft: theme.spacing(4),
+    fontSize: '12vw',
     fontFamily: 'netflix',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    background: '-webkit-linear-gradient(#eee, #333)',
   },
   infoButton: {
     backgroundColor: 'gray',
@@ -59,13 +64,13 @@ function BannerCard() {
   };
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} style={{ backgroundImage: `url(${"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTQOtj4pUXP9fzyUz5gVYkZt3_1Z1gCNsGEPmT5snx_Xxhp0UNo"})` }}>
 
         <Typography className={ classes.bannerTitle }>
           Vikings
         </Typography>
 
-      <CardActions>
+      <CardActions className={ classes.btnDiv }>
 
         <Button
           className={classes.watchButton}
