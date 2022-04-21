@@ -1,5 +1,7 @@
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { useEffect, useState } from 'react';
+import SeriesRequests from '../../utils/SeriesApiRequest';
 import BannerCard from './BannerCard';
 
 const useStyles = makeStyles((theme) => ({
@@ -15,8 +17,21 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const seriesRequests = new SeriesRequests();
+
 function MainBanner() {
+  const [latest, setLatest] = useState({});
   const classes = useStyles();
+
+  useEffect(() => {
+    const getRequest = async () => {
+      const result = await seriesRequests.getLatest();
+      console.log(result);
+      setLatest(result);
+    }
+
+    getRequest()
+  }, [])
 
   return (
     <Grid
@@ -26,7 +41,7 @@ function MainBanner() {
       alignItems="center"
       className={classes.banner}
     >
-      <BannerCard />
+      <BannerCard latest={latest}/>
       
     </Grid>
   )

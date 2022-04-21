@@ -7,14 +7,19 @@ import PlayArrowSharpIcon from '@material-ui/icons/PlayArrowSharp';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100vh',
+    height: '100%',
     width: '100%',
-    backgroundSize: '100vw 100vh',
-    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100% 100%',
+    backgroundPosition: 'center',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-end',
+    [theme.breakpoints.up('md')]: {
+      height: 800,
+      width: '100%',
+      backgroundSize: '100% 100%',
+    }
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -28,12 +33,13 @@ const useStyles = makeStyles((theme) => ({
     // button spin
   },
   btnDiv: {
-    marginBottom: '20vh',
+    marginBottom: '15vh',
     paddingLeft: theme.spacing(4),
   },
   bannerTitle: {
     paddingLeft: theme.spacing(4),
-    fontSize: '12vw',
+    marginTop: '25vh',
+    fontSize: '10vw',
     fontFamily: 'netflix',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
@@ -44,16 +50,18 @@ const useStyles = makeStyles((theme) => ({
     color: 'black',
     fontWeight: 'bold',
     fontSize: '1vw',
+    padding: 10,
   },
   watchButton: {
     color: 'black',
     fontWeight: 'bold',
     fontSize: '1vw',
     backgroundColor: 'white',
+    padding: 10,
   }
 }));
 
-function BannerCard() {
+function BannerCard({ latest }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -62,10 +70,13 @@ function BannerCard() {
   };
 
   return (
-    <Card className={classes.root} style={{ backgroundImage: `url(${"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTQOtj4pUXP9fzyUz5gVYkZt3_1Z1gCNsGEPmT5snx_Xxhp0UNo"})` }}>
+    <Card
+      className={classes.root}
+      style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${latest.poster_path})` }}
+    >
 
         <Typography className={ classes.bannerTitle }>
-          Vikings
+          {latest.name}
         </Typography>
 
       <CardActions className={ classes.btnDiv }>
