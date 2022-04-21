@@ -5,17 +5,21 @@ import { PlayCircleOutline, ControlPoint, ExpandMore } from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '13vh',
-    width: '25vh',
+    // height: '13vh',
+    // width: '25vh',
+    height: 200,
+    width: 200,
     marginLeft: 15,
     marginRigth: 15,
-    marginTop: 10,
+    marginTop: 0,
     marginBottom: 30,
     transition: '1s'
   },
   rootHover: {
-    height: '25vh',
-    width: '30vh',
+    // height: '25vh',
+    // width: '30vh',
+    height: 350,
+    width: 350,
     marginLeft: 15,
     marginRigth: 15,
     transition: '1s'
@@ -34,13 +38,17 @@ const useStyles = makeStyles((theme) => ({
   media: {
     height: '100%',
     width: '100%',
-    backgroundSize: '25vh 14vh',
+    // backgroundSize: '25vh 14vh',
+    // backgroundPosition: 'center',
     transition: '1s'
   },
   mediaHover: {
-    height: '15vh',
+    // height: '15vh',
+    height: '30vh',
     width: '100%',
-    backgroundSize: '31vh 26vh', 
+    // backgroundSize: '31vh 26vh',
+    // backgroundPosition: 'center',
+    backgroundSize: 'cover',
     transition: '1s'
   },
   cardActions: {
@@ -67,7 +75,7 @@ function MidiaCard({ movie }) {
     >
 
       <CardMedia
-      style={ { backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.poster_path})`}}
+      style={ { backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`}}
       className={ cardStyle ? classes.mediaHover : classes.media }
       />
 
