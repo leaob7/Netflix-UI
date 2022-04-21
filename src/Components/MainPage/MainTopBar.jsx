@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,8 +16,18 @@ const useStyles = makeStyles((theme) => ({
   },
   topBar: {
     minHeight: '1vh',
+    height: '6vh',
     display: 'flex',
     justifyContent: 'space-between',
+    transition: '1.5s'
+  },
+  darkBar: {
+    minHeight: '1vh',
+    height: '6vh',
+    display: 'flex',
+    justifyContent: 'space-between',
+    backgroundColor: 'black',
+    transition: '1.5s'
   },
   topNav: {
     display: 'flex',
@@ -87,11 +97,28 @@ const useStyles = makeStyles((theme) => ({
 
 function MainTopBar() {
   const [search, setSearch] = useState(false);
+  const [blacked, setBlacked] = useState(false);
   const classes = useStyles();
 
+  useEffect(() => {
+    const scrollListener = () => {
+      if(window.scrollY > 20) {
+        setBlacked(true);
+      } else {
+        setBlacked(false)
+      }
+    }
+
+    window.addEventListener('scroll', scrollListener);
+
+    return () => {
+      window.removeEventListener('scroll', scrollListener);
+    }
+  }, [])
+
   return (
-      <AppBar position="fixed"  color='transparent'>
-        <Toolbar className={ classes.topBar }>
+      <AppBar position="fixed" color='transparent' style={{ boxShadow: 'none' }}>
+        <Toolbar className={ blacked ? classes.darkBar : classes.topBar } >
 
         <div className={ classes.topNav }>
 
