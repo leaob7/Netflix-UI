@@ -5,16 +5,12 @@ import { NavigateBeforeSharp, NavigateNextSharp } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
-  listGrid: {
-    display: 'flex',
-    alignItems: "center",
-    justifyContent: 'center'
-  },
   listTitle: {
     color: 'white',
     marginTop: 10,
-    marginLeft: 63,
-    fontSize: '1.5vw'
+    marginLeft: 17,
+    fontSize: '1.5vw',
+    fontWeight: 'bold'
   },
   listArrowRight: {
     position: 'absolute',
@@ -53,7 +49,7 @@ function MainCardList({ movies: moviesDB, textField }) {
 
   const handleRightArrow = () => {
     let x = scrollX - Math.round(window.innerWidth / 2);
-    let moviesW = movies.length * 260;
+    let moviesW = movies.length * 240;
     // the length of the movies list
     if((window.innerWidth - moviesW) > x) {
       x = (window.innerWidth - moviesW);

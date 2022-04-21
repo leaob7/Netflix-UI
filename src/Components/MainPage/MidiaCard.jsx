@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     height: 200,
     width: 200,
     marginLeft: 15,
-    marginRigth: 15,
+    marginRight: 15,
     marginTop: 0,
     marginBottom: 30,
     transition: '1s'
@@ -19,9 +19,9 @@ const useStyles = makeStyles((theme) => ({
     // height: '25vh',
     // width: '30vh',
     height: 350,
-    width: 350,
+    width: 300,
     marginLeft: 15,
-    marginRigth: 15,
+    marginRight: 15,
     transition: '1s'
   },
   expand: {
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     width: '100%',
     // backgroundSize: '25vh 14vh',
-    // backgroundPosition: 'center',
+    backgroundPosition: 'center bottom',
     transition: '1s'
   },
   mediaHover: {
@@ -47,13 +47,14 @@ const useStyles = makeStyles((theme) => ({
     height: '30vh',
     width: '100%',
     // backgroundSize: '31vh 26vh',
-    // backgroundPosition: 'center',
+    backgroundPosition: 'center top',
     backgroundSize: 'cover',
     transition: '1s'
   },
   cardActions: {
     display: 'flex',
     alignItems: 'flex-start',
+    justifyContent: 'space-between',
     height: '100%',
     padding: 2,
     backgroundColor: 'rgb(25, 25, 25)',
@@ -75,11 +76,12 @@ function MidiaCard({ movie }) {
     >
 
       <CardMedia
-      style={ { backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`}}
+      style={ { backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.poster_path})`}}
       className={ cardStyle ? classes.mediaHover : classes.media }
       />
 
       <CardActions className={ classes.cardActions } disableSpacing>
+        <div>
           <IconButton
           className={classes.cardButtons}
           aria-label="Assistir"
@@ -90,8 +92,12 @@ function MidiaCard({ movie }) {
           <IconButton className={classes.cardButtons} aria-label="Adicionar á minha lista">
             <ControlPoint />
           </IconButton>
+        </div>
+        
+        <IconButton className={classes.cardButtons} aria-label="Mais informações">
+            <ExpandMore />
+        </IconButton>
 
-            <ExpandMore className={classes.cardButtons}/>
         </CardActions>
 
     </Card>
