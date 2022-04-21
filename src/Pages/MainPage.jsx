@@ -3,10 +3,11 @@ import MoviesRequest from '../utils/MoviesApiRequest';
 import MainTopBar from '../Components/MainPage/MainTopBar';
 import MainBody from '../Components/MainPage/MainBody';
 import { makeStyles } from '@material-ui/core/styles';
+import Footer from '../Components/Footer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    // display: 'flex',
     flexDirection: 'colunm',
     background: theme.palette.primary.dark,
     height: '100%',
@@ -56,6 +57,7 @@ function MainPage() {
       <div className={ classes.root }>
         <MainTopBar />
         <MainBody MoviesData={ movies } />
+        <Footer />
       </div>
     )
 }
