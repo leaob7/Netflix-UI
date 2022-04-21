@@ -1,4 +1,4 @@
-class MoviesRequests {
+class SeriesRequests {
   async getLatest() {
     return fetch(`https://api.themoviedb.org/3/tv/latest?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
     .then((response) => response.json());
@@ -16,4 +16,4 @@ class MoviesRequests {
 
 }
 
-export default MoviesRequests;
+export default SeriesRequests;

@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MainBody({ MoviesData }) {
+function MainBody({ MoviesData, SeriesData }) {
   const classes = useStyles();
 
   return (
@@ -21,11 +21,15 @@ function MainBody({ MoviesData }) {
 
       <MainBanner /> 
 
-      <MainCardList movies={ MoviesData.popular } textField="Em alta" />
+      <MainCardList movies={ MoviesData.popular } textField="Filmes em alta" />
+
+      <MainCardList movies={ SeriesData.popular } textField="Series em alta" />
 
       <MainCardList movies={ MoviesData.nowPlaying } textField="Lançamentos" />
 
       <MainCardList movies={ MoviesData.topRated } textField="Filmes premiados" />
+
+      <MainCardList movies={ SeriesData.topRated } textField="Series premiadas" />
 
     </Grid>
   )

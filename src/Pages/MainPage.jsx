@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import MoviesRequest from '../utils/MoviesApiRequest';
+import MoviesRequests from '../utils/MoviesApiRequest';
+import SeriesRequests from '../utils/SeriesApiRequest';
 import MainTopBar from '../Components/MainPage/MainTopBar';
 import MainBody from '../Components/MainPage/MainBody';
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,13 +16,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const moviesRequest = new MoviesRequest();
+const moviesRequest = new MoviesRequests();
+const seriesRequest = new SeriesRequests();
 
 function MainPage() {
   const classes = useStyles();
   const [popularMovies, setPopularMovies] = useState([]);
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const [popularSeries, setPopularSeries] = useState([]);
+  const [topRatedSeries, setTopRatedSeries] = useState([]);
 
   const getRequest = async (request) => {
     const response = await request;
@@ -30,13 +34,19 @@ function MainPage() {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const popular = await getRequest(moviesRequest.getPopular());
+      const popularM = await getRequest(moviesRequest.getPopular());
       const nowPlaying = await getRequest(moviesRequest.getNowPlaying());
-      const top = await getRequest(moviesRequest.getTopRated());
+      const topM = await getRequest(moviesRequest.getTopRated());
 
-      setPopularMovies(popular);
+      const popularS = await getRequest(seriesRequest.getPopular());
+      const topS = await getRequest(seriesRequest.getTopRated());
+
+      setPopularMovies(popularM);
       setNowPlayingMovies(nowPlaying);
-      setTopRatedMovies(top);
+      setTopRatedMovies(topM);
+
+      setPopularSeries(popularS);
+      setTopRatedSeries(topS);
     }
 
     fetchAll()
@@ -48,15 +58,15 @@ function MainPage() {
     topRated: topRatedMovies
   }
 
-  // const series = {
-  //   popular: ,
-  //   topRated: ,
-  // }
+  const series = {
+    popular: popularSeries,
+    topRated: topRatedSeries,
+  }
 
     return (
       <div className={ classes.root }>
         <MainTopBar />
-        <MainBody MoviesData={ movies } />
+        <MainBody MoviesData={ movies } SeriesData={ series }/>
         <Footer />
       </div>
     )
