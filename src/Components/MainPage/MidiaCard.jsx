@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     width: '25vh',
     marginLeft: 15,
     marginRigth: 15,
-    marginTop: 30,
+    marginTop: 10,
     marginBottom: 30,
     transition: '1s'
   },
