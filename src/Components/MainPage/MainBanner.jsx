@@ -24,10 +24,10 @@ function MainBanner() {
   const classes = useStyles();
 
   useEffect(() => {
+    const random = Math.floor(Math.random() * 19) + 1;
     const getRequest = async () => {
-      const result = await seriesRequests.getLatest();
-      console.log(result);
-      setLatest(result);
+      const result = await seriesRequests.getPopular()
+      setLatest(result.results[random]);
     }
 
     getRequest()

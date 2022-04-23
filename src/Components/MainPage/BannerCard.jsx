@@ -64,7 +64,8 @@ const useStyles = makeStyles((theme) => ({
 function BannerCard({ latest }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-
+  const latestBackground = latest.poster_path ? latest.poster_path : latest.backdrop_path;
+  
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -72,7 +73,7 @@ function BannerCard({ latest }) {
   return (
     <Card
       className={classes.root}
-      style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${latest.poster_path})` }}
+      style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${latestBackground})` }}
     >
 
         <Typography className={ classes.bannerTitle }>
