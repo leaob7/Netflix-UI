@@ -1,7 +1,7 @@
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useEffect, useState } from 'react';
-import SeriesRequests from '../../utils/SeriesApiRequest';
+import SeriesRequests from '../../../utils/SeriesApiRequest';
 import BannerCard from './BannerCard';
 
 const useStyles = makeStyles((theme) => ({

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import MoviesRequests from '../utils/MoviesApiRequest';
 import SeriesRequests from '../utils/SeriesApiRequest';
 import MainTopBar from '../Components/MainPage/MainTopBar';
-import MainBody from '../Components/MainPage/MainBody';
+import MainBody from '../Components/MainPage/Body/MainBody';
 import { makeStyles } from '@material-ui/core/styles';
 import Footer from '../Components/Footer';
 
