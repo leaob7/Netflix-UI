@@ -187,8 +187,8 @@ function MidiaCard({ cardData }) {
       </CardActions>
 
       <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
+        aria-labelledby="dataCard-modal"
+        aria-describedby="dataCard-modal-data"
         className={classes.modal}
         open={open}
         onClose={handleClose}
