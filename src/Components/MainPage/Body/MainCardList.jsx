@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   listArrowRight: {
     position: 'absolute',
     width: 40,
-    height: '23vh',
+    height: '24vh',
     right: 0,
     color: 'white',
     backgroundColor: 'rgb(0, 0, 0, 0.6)',
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   listArrowLeft: {
     position: 'absolute',
     width: 40,
-    height: '23vh',
+    height: '24vh',
     left: 0,
     color: 'white',
     backgroundColor: 'rgb(0, 0, 0, 0.6)',

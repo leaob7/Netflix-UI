@@ -6,9 +6,6 @@ import MainCardList from './MainCardList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    height: '100%',
-    width: '100%',
     overflow: 'hidden'
   },
 }));

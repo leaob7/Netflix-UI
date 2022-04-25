@@ -8,8 +8,6 @@ import Footer from '../Components/Footer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // display: 'flex',
-    flexDirection: 'colunm',
     background: theme.palette.primary.dark,
     height: '100%',
     width: '100%'
