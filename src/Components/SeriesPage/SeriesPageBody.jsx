@@ -15,7 +15,7 @@ function SeriesPageBody({ series }) {
   return (
         <Grid container className={classes.root}>
 
-            <MainBanner /> 
+            <MainBanner path="series"/> 
 
             <MainCardList dataList={series.popular} textField="Em alta"/>
 

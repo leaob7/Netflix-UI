@@ -14,7 +14,7 @@ function MoviesPageBody({ movies }) {
   return (
         <Grid container className={classes.root}>
 
-            <MainBanner /> 
+            <MainBanner path="movies"/> 
 
             <MainCardList dataList={movies.popular} textField="Em alta"/>
 

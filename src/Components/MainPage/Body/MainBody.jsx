@@ -16,7 +16,7 @@ function MainBody({ MoviesData, SeriesData }) {
   return (
     <Grid container className={classes.root}>
 
-      <MainBanner /> 
+      <MainBanner path="main"/> 
 
       <MainCardList dataList={ MoviesData.popular } textField="Filmes em alta" />
 

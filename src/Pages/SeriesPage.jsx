@@ -29,11 +29,11 @@ function SeriesPage() {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const popularM = await getRequest(seriesRequest.getPopular());
-      const topM = await getRequest(seriesRequest.getTopRated());
+      const popular = await getRequest(seriesRequest.getPopular());
+      const top = await getRequest(seriesRequest.getTopRated());
 
-      setPopularSeries(popularM);
-      setTopRatedSeries(topM);
+      setPopularSeries(popular);
+      setTopRatedSeries(top);
     }
 
     fetchAll()
