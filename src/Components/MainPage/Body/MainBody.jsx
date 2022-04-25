@@ -18,15 +18,15 @@ function MainBody({ MoviesData, SeriesData }) {
 
       <MainBanner /> 
 
-      <MainCardList movies={ MoviesData.popular } textField="Filmes em alta" />
+      <MainCardList dataList={ MoviesData.popular } textField="Filmes em alta" />
 
-      <MainCardList movies={ SeriesData.popular } textField="Series em alta" />
+      <MainCardList dataList={ SeriesData.popular } textField="Series em alta" />
 
-      <MainCardList movies={ MoviesData.nowPlaying } textField="Lançamentos" />
+      <MainCardList dataList={ MoviesData.nowPlaying } textField="Lançamentos" />
 
-      <MainCardList movies={ MoviesData.topRated } textField="Filmes premiados" />
+      <MainCardList dataList={ MoviesData.topRated } textField="Filmes premiados" />
 
-      <MainCardList movies={ SeriesData.topRated } textField="Series premiadas" />
+      <MainCardList dataList={ SeriesData.topRated } textField="Series premiadas" />
 
     </Grid>
   )

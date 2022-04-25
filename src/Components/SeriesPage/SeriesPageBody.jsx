@@ -8,7 +8,8 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
   },
 }))
-function MoviesPageBody({ movies }) {
+
+function SeriesPageBody({ series }) {
   const classes = useStyles();
 
   return (
@@ -16,14 +17,12 @@ function MoviesPageBody({ movies }) {
 
             <MainBanner /> 
 
-            <MainCardList dataList={movies.popular} textField="Em alta"/>
+            <MainCardList dataList={series.popular} textField="Em alta"/>
 
-            <MainCardList dataList={ movies.nowPlaying } textField="Lançamentos" />
-
-            <MainCardList dataList={ movies.topRated } textField="Filmes premiados" />
+            <MainCardList dataList={ series.topRated } textField="Series premiadas" />
 
         </Grid>
   )
 }
 
-export default MoviesPageBody;
+export default SeriesPageBody;

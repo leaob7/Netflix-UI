@@ -30,8 +30,8 @@ const useStyles = makeStyles({
   }
 })
 
-function MainCardList({ movies: moviesDB, textField }) {
-  const movies = moviesDB.slice(0, 10);
+function MainCardList({ dataList, textField }) {
+  const movies = dataList.slice(0, 10);
   const [scrollX, setScrollX] = useState(-400);
   const classes = useStyles();
 
