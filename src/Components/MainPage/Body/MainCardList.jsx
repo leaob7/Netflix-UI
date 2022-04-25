@@ -83,7 +83,7 @@ function MainCardList({ movies: moviesDB, textField }) {
 
         { movies.map((movie) => (
           
-          <MidiaCard key={movie.id} movie={movie} />
+          <MidiaCard key={movie.id} cardData={movie} />
           
           )) }
 

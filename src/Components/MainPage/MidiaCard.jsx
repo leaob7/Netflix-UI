@@ -1,7 +1,18 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardMedia, CardActions, IconButton, Modal, Fade, Backdrop, Typography } from '@material-ui/core';
-import { PlayCircleOutline, ControlPoint, ExpandMore } from '@material-ui/icons';
+import {
+  Button,
+  Card,
+  CardMedia,
+  CardActions,
+  IconButton,
+  Modal,
+  Fade,
+  Backdrop,
+  Typography,
+} from '@material-ui/core';
+import { PlayCircleOutline, ControlPoint, ExpandMore, Add } from '@material-ui/icons';
+import PlayArrowSharpIcon from '@material-ui/icons/PlayArrowSharp';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,14 +59,17 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    boxShadow: 'none',
   },
   paper: {
     border: '2px solid #000',
     borderRadius: 20,
-    boxShadow: theme.shadows[5],
-    width: '50%',
+    width: '90%',
     height: '100%',
-    marginTop: 100,
+    marginTop: '5%',
+    [theme.breakpoints.up('md')]: {
+      width: '50%',
+    }
   },
   modalCard: {
     display: 'flex',
@@ -63,34 +77,72 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     width: '100%',
     height: '100%',
-    backgroundColor: 'black'
+    backgroundColor: '#151513'
   },
   modalMedia: {
-    height: '50%',
+    height: 500,
     width: '100%',
-    backgroundPosition: 'center top',
-    backgroundSize: '60% 100%',
+    backgroundPosition: 'center',
+    backgroundSize: '100% 500px contain',
+  },
+  infoTitle: {
+    fontFamily: 'netflix',
+    fontSize: '300%',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    background: '-webkit-linear-gradient(#eee, #333)',
   },
   infoText: {
     color: 'white',
-    fontSize: 30,
   },
   infoOverview: {
     padding: 25,
     width: '50%',
     color: 'white',
     fontSize: 15,
-  }
+  },
+  infoGenres: {
+    padding: 25,
+    marginLeft: 200,
+    color: 'white',
+    fontSize: 15,
+  },
+  modalButton: {
+    height: '60%',
+    borderRadius: 4,
+    color: 'black',
+    backgroundColor: 'white',
+    fontWeight: 'bold',
+  },
+  modalListBtn: {
+    marginLeft: 25,
+    height: '60%',
+    borderRadius: 100,
+    color: 'white',
+    backgroundColor: 'rgb(0, 0, 0, 0.3)',
+    '&:hover': {
+      backgroundColor: 'rgb(0, 0, 0, 0.3)',
+    }
+  },
+  modalIcon: {
+    fontSize: '150%',
+  },
+  mediaContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginTop: 300,
+    marginLeft: 40
+  },
 }));
 
-function MidiaCard({ movie }) {
+function MidiaCard({ cardData }) {
   const classes = useStyles();
   const [cardStyle, setCardStyle] = useState(false);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
-    window.history.pushState(null, null, `?${movie.id}`);
+    window.history.pushState(null, null, `?${cardData.id}`);
   };
 
   const handleClose = () => {
@@ -106,7 +158,7 @@ function MidiaCard({ movie }) {
     >
 
       <CardMedia
-        style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.poster_path})` }}
+        style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${cardData.poster_path})` }}
         className={cardStyle ? classes.mediaHover : classes.media}
       />
 
@@ -152,46 +204,57 @@ function MidiaCard({ movie }) {
             <Card className={classes.modalCard}>
 
               <CardMedia
-                style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.poster_path})` }}
+                style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${cardData.backdrop_path})` }}
                 className={classes.modalMedia}
-              />
+              >
 
-              <Typography className={classes.infoText}>
-                {movie.title}
-              </Typography>
+                <div className={classes.mediaContainer}>
 
-                <div>
-                  <IconButton
-                    className={classes.cardButtons}
-                    aria-label="Assistir"
-                  >
-                    <PlayCircleOutline />
-                  </IconButton>
+                    <Typography className={classes.infoTitle}>
+                      { cardData.title || cardData.name || cardData.original_name }
+                    </Typography>
 
-                  <IconButton className={classes.cardButtons} aria-label="Adicionar á minha lista">
-                    <ControlPoint />
-                  </IconButton>
-                  
+                  <div>
+
+                    <Button
+                      className={classes.modalButton}
+                      aria-label="Assistir"
+                      variant='contained'
+                    >
+                      <PlayArrowSharpIcon className={classes.modalIcon} />
+                      <text>Assistir</text>
+                    </Button>
+
+                    <Button
+                    className={classes.modalListBtn}
+                    aria-label="Adicionar á minha lista"
+                    variant='contained'
+                    >
+                      <Add className={classes.modalIcon} />
+                    </Button>
+
+                  </div>
+
                 </div>
 
-                <div>
-                  <Typography className={classes.infoText}>
-                    { movie.release_year }
-                  </Typography>
+              </CardMedia>
 
-                  <Typography className={classes.infoText}>
-                    { movie.first_air_date }
-                  </Typography>
-                </div>
+              <div style={{ alignSelf: 'flex-start', marginLeft: 25, marginTop: 25 }}>
+
+                <Typography className={classes.infoText}>
+                  {cardData.release_year || cardData.first_air_date}
+                </Typography>
+
+              </div>
 
               <div style={{ display: 'flex' }}>
 
                 <Typography className={classes.infoOverview}>
-                  { movie.overview }
+                  {cardData.overview}
                 </Typography>
 
-                <Typography className={classes.infoOverview}>
-                    Generos
+                <Typography className={classes.infoGenres} >
+                  Generos: {cardData.genre_ids}
                 </Typography>
 
               </div>
