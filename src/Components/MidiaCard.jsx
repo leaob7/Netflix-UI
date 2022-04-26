@@ -249,8 +249,9 @@ function MidiaCard({ cardData }) {
                       className={classes.modalListBtn}
                       aria-label="Adicionar á minha lista"
                       variant='contained'
+                      onClick={handleAddListData}
                     >
-                      <Add className={classes.modalIcon} />
+                      {addList ?  <Check /> : <Add className={classes.modalIcon} />}
                     </Button>
 
                   </div>

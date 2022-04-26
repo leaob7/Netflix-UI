@@ -13,7 +13,11 @@ function MyListBody ({ myList }) {
 
   const classes = useStyles();
   return (
-    <Grid container className={classes.root}>
+    <Grid
+    container
+    justifyContent='center'
+    className={classes.root}
+    >
 
         {
           myList.map((midia) => (
