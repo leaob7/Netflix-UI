@@ -152,8 +152,9 @@ function MidiaCard({ cardData }) {
   };
 
   const handleClose = () => {
+    console.log(window.history.go);
     setOpen(false);
-    window.history.pushState(null, null, '/browse');
+    window.history.pushState(null, null, window.history.back());
   };
 
   const handleAddListData = async () => {
