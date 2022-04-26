@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { addMovies } from '../actions/index';
 import InitialTopBar from '../Components/InicialPage/InicialTopBar';
 import InitialUserBody from '../Components/InicialPage/InicialUsersBody';
 import { makeStyles } from '@material-ui/core/styles';
@@ -24,8 +22,5 @@ function InicialPage () {
     )
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatchMovies: (payload) => dispatch(addMovies(payload))});
-
-export default connect(null, mapDispatchToProps)(InicialPage);
+export default InicialPage;
 

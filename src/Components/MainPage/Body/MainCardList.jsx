@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Grid, Typography  } from '@material-ui/core';
-import MidiaCard from '../MidiaCard';
+import MidiaCard from '../../MidiaCard';
 import { NavigateBeforeSharp, NavigateNextSharp } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 
@@ -81,7 +81,7 @@ function MainCardList({ dataList, textField }) {
 
         <NavigateNextSharp className={classes.listArrowRight} onClick={handleRightArrow} />
 
-        { movies.map((movie) => (
+        { movies.map((movie) => ( 
           
           <MidiaCard key={movie.id} cardData={movie} />
           

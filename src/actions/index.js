@@ -1,1 +1,3 @@
-export const addMovies = (payload) => ({ type: 'ADD_MOVIES', payload })
+const addMyList = (payload) => ({ type: 'ADD_MYLIST', payload });
+
+export default addMyList;

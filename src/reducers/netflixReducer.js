@@ -1,13 +1,13 @@
 const INITIAL_STATE = {
-    movies: []
+      myList: []
 }
 
 function NetflixReducer(state= INITIAL_STATE, action) {
   switch(action.type) {
-    case 'ADD_MOVIES':
+    case 'ADD_MYLIST':
       return {
         ...state,
-        movies: [...state.movies, action.payload],
+        myList: [...state.myList, action.payload],
       }
     default: 
       return state;

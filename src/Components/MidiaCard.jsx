@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import { PlayCircleOutline, ControlPoint, ExpandMore, Add } from '@material-ui/icons';
 import PlayArrowSharpIcon from '@material-ui/icons/PlayArrowSharp';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -94,6 +95,8 @@ const useStyles = makeStyles((theme) => ({
   },
   infoText: {
     color: 'white',
+    marginRight: 10,
+    fontWeight: 'bold'
   },
   infoOverview: {
     padding: 25,
@@ -138,9 +141,11 @@ const useStyles = makeStyles((theme) => ({
 function MidiaCard({ cardData }) {
   const classes = useStyles();
   const [cardStyle, setCardStyle] = useState(false);
+  const [addList, setAddList] = useState(false);
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleOpen = () => {
+  const handleOpen = async () => {
     setOpen(true);
     window.history.pushState(null, null, `?${cardData.id}`);
   };
@@ -149,6 +154,11 @@ function MidiaCard({ cardData }) {
     setOpen(false);
     window.history.pushState(null, null, '/browse');
   };
+
+  const handleAddListData = () => {
+    setAddList(!addList);
+    dispatch({ type: 'ADD_MYLIST', payload: cardData });
+  }
 
   return (
     <Card
@@ -171,7 +181,11 @@ function MidiaCard({ cardData }) {
             <PlayCircleOutline />
           </IconButton>
 
-          <IconButton className={classes.cardButtons} aria-label="Adicionar á minha lista">
+          <IconButton
+          className={classes.cardButtons}
+          aria-label="Adicionar á minha lista"
+          onClick={handleAddListData}
+          >
             <ControlPoint />
           </IconButton>
         </div>
@@ -210,9 +224,9 @@ function MidiaCard({ cardData }) {
 
                 <div className={classes.mediaContainer}>
 
-                    <Typography className={classes.infoTitle}>
-                      { cardData.title || cardData.name || cardData.original_name }
-                    </Typography>
+                  <Typography className={classes.infoTitle}>
+                    {cardData.title || cardData.name || cardData.original_name}
+                  </Typography>
 
                   <div>
 
@@ -226,9 +240,9 @@ function MidiaCard({ cardData }) {
                     </Button>
 
                     <Button
-                    className={classes.modalListBtn}
-                    aria-label="Adicionar á minha lista"
-                    variant='contained'
+                      className={classes.modalListBtn}
+                      aria-label="Adicionar á minha lista"
+                      variant='contained'
                     >
                       <Add className={classes.modalIcon} />
                     </Button>
@@ -239,27 +253,32 @@ function MidiaCard({ cardData }) {
 
               </CardMedia>
 
-              <div style={{ alignSelf: 'flex-start', marginLeft: 25, marginTop: 25 }}>
+                <div style={{ display: 'flex', alignSelf: 'flex-start', marginLeft: 25, marginTop: 25 }}>
 
-                <Typography className={classes.infoText}>
-                  {cardData.release_year || cardData.first_air_date}
-                </Typography>
+                  <Typography className={classes.infoText}>
+                    {cardData.release_date || cardData.first_air_date}
+                  </Typography>
 
-              </div>
-
-              <div style={{ display: 'flex' }}>
-
-                <Typography className={classes.infoOverview}>
-                  {cardData.overview}
-                </Typography>
-
-                <Typography className={classes.infoGenres} >
-                  Generos: {cardData.genre_ids}
-                </Typography>
-
-              </div>
+                  <Typography className={classes.infoText}>
+                      {cardData.runtime || cardData.number_of_seasons}
+                  </Typography>
 
 
+                </div>
+
+
+
+                <div style={{ display: 'flex' }}>
+
+                  <Typography className={classes.infoOverview}>
+                    {cardData.overview}
+                  </Typography>
+
+                  <Typography className={classes.infoGenres} >
+                    Generos: {cardData.genre_ids}
+                  </Typography>
+
+                </div>
 
             </Card>
 
