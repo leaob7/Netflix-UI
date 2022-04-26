@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core';
 import { PlayCircleOutline, ControlPoint, ExpandMore, Add, Check } from '@material-ui/icons';
 import PlayArrowSharpIcon from '@material-ui/icons/PlayArrowSharp';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -144,6 +144,7 @@ function MidiaCard({ cardData }) {
   const [addList, setAddList] = useState(false);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+  const myListRedux = useSelector((state) => state.NetflixReducer.myList);
 
   const handleOpen = async () => {
     setOpen(true);
@@ -155,9 +156,14 @@ function MidiaCard({ cardData }) {
     window.history.pushState(null, null, '/browse');
   };
 
-  const handleAddListData = () => {
+  const handleAddListData = async () => {
     setAddList(!addList);
-    dispatch({ type: 'ADD_MYLIST', payload: cardData });
+    
+    if(myListRedux.some((m) => m.id === cardData.id)) {
+      window.alert('Este conteúdo já está na sua lista');
+    } else {
+      dispatch({ type: 'ADD_MYLIST', payload: cardData });
+    }
   }
 
   return (
