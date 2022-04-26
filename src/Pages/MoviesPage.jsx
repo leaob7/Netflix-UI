@@ -53,7 +53,7 @@ function MoviesPage() {
       <MainTopBar />
       <MoviesPageBody movies={movies}/>
       <Footer />
-  </div>
+    </div>
   )
 }
 

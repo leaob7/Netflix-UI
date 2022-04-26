@@ -158,7 +158,6 @@ function MidiaCard({ cardData }) {
 
   const handleAddListData = async () => {
     setAddList(!addList);
-    
     if(myListRedux.some((m) => m.id === cardData.id)) {
       window.alert('Este conteúdo já está na sua lista');
     } else {
