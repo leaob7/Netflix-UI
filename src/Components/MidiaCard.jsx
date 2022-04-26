@@ -11,7 +11,7 @@ import {
   Backdrop,
   Typography,
 } from '@material-ui/core';
-import { PlayCircleOutline, ControlPoint, ExpandMore, Add } from '@material-ui/icons';
+import { PlayCircleOutline, ControlPoint, ExpandMore, Add, Check } from '@material-ui/icons';
 import PlayArrowSharpIcon from '@material-ui/icons/PlayArrowSharp';
 import { useDispatch } from 'react-redux';
 
@@ -186,7 +186,7 @@ function MidiaCard({ cardData }) {
           aria-label="Adicionar á minha lista"
           onClick={handleAddListData}
           >
-            <ControlPoint />
+            {addList ?  <Check /> : <ControlPoint />}
           </IconButton>
         </div>
 
