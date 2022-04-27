@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import MoviesRequests from '../utils/MoviesApiRequest';
-import SeriesRequests from '../utils/SeriesApiRequest';
+import MoviesRequests from '../API/MoviesApiRequest';
+import SeriesRequests from '../API/SeriesApiRequest';
 import MainTopBar from '../Components/MainPage/MainTopBar';
 import MainBody from '../Components/MainPage/Body/MainBody';
 import { makeStyles } from '@material-ui/core/styles';

@@ -15,7 +15,7 @@ import { PlayCircleOutline, ControlPoint, ExpandMore, Add, Check } from '@materi
 import PlayArrowSharpIcon from '@material-ui/icons/PlayArrowSharp';
 import { useDispatch, useSelector } from 'react-redux';
 
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
   root: {
     height: 200,
     width: 200,

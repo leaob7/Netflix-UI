@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Footer from "../Components/Footer";
 import MainTopBar from "../Components/MainPage/MainTopBar";
-import SeriesRequests from '../utils/SeriesApiRequest';
+import SeriesRequests from '../API/SeriesApiRequest';
 import SeriesPageBody from '../Components/SeriesPage/SeriesPageBody';
 
 const seriesRequest = new SeriesRequests();

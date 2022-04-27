@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import MoviesRequests from '../utils/MoviesApiRequest';
+import MoviesRequests from '../API/MoviesApiRequest';
 import { makeStyles } from '@material-ui/core/styles';
 import Footer from "../Components/Footer";
 import MainTopBar from "../Components/MainPage/MainTopBar";

@@ -1,4 +1,4 @@
-import MainBanner from "../MainPage/Banner/MainBanner";
+import MainBanner from "../Banner/MainBanner";
 import MainCardList from "../MainPage/Body/MainCardList";
 import { makeStyles } from "@material-ui/styles";
 import { Grid } from "@material-ui/core";
