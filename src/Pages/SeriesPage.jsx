@@ -20,7 +20,10 @@ const useStyles = makeStyles((theme) => ({
 function SeriesPage() {
   const classes = useStyles();
   const [popularSeries, setPopularSeries] = useState([]);
+  const [popularTwo, setPopularTwo] = useState([]);
+  const [popularThree, setPopularThree] = useState([]);
   const [topRatedSeries, setTopRatedSeries] = useState([]);
+  const [topRatedTwo, setTopRatedTwo] = useState([]);
 
   const getRequest = async (request) => {
     const response = await request;
@@ -29,11 +32,17 @@ function SeriesPage() {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const popular = await getRequest(seriesRequest.getPopular());
-      const top = await getRequest(seriesRequest.getTopRated());
+      const popular = await getRequest(seriesRequest.getPopular(1));
+      const popularPageTwo = await getRequest(seriesRequest.getPopular(2));
+      const popularPageThree = await getRequest(seriesRequest.getPopular(3));
+      const top = await getRequest(seriesRequest.getTopRated(1));
+      const topTwo = await getRequest(seriesRequest.getTopRated(2));
 
       setPopularSeries(popular);
+      setPopularTwo(popularPageTwo);
+      setPopularThree(popularPageThree);
       setTopRatedSeries(top);
+      setTopRatedTwo(topTwo);
     }
 
     fetchAll()
@@ -41,7 +50,10 @@ function SeriesPage() {
 
   const series = {
     popular: popularSeries,
-    topRated: topRatedSeries
+    popularTwo: popularTwo,
+    popularThree: popularThree,
+    topRated: topRatedSeries,
+    topRatedTwo: topRatedTwo,
   }
 
   return (

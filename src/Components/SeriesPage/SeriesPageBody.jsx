@@ -17,9 +17,15 @@ function SeriesPageBody({ series }) {
 
             <MainBanner path="series"/> 
 
-            <MainCardList dataList={series.popular} textField="Em alta"/>
+            <MainCardList dataList={series.popular} textField="Populares"/>
+
+            <MainCardList dataList={series.popularTwo} textField="Em alta"/>
+
+            <MainCardList dataList={series.popularThree} textField="Em destaque"/>
 
             <MainCardList dataList={ series.topRated } textField="Series premiadas" />
+
+            <MainCardList dataList={ series.topRatedTwo } textField="Series conceituadas" />
 
         </Grid>
   )

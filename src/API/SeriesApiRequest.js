@@ -4,13 +4,13 @@ class SeriesRequests {
     .then((response) => response.json());
   }
 
-  async getPopular() {
-    return fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_API_KEY}&language=pt-BR&page=1`)
+  async getPopular(page) {
+    return fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_API_KEY}&language=pt-BR&page=${page}`)
     .then((response) => response.json());
   }
 
-  async getTopRated() {
-    return fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=pt-BR&page=1`)
+  async getTopRated(page) {
+    return fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=pt-BR&page=${page}`)
     .then((response) => response.json());
   }
 

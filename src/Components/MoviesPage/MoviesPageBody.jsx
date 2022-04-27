@@ -18,9 +18,13 @@ function MoviesPageBody({ movies }) {
 
             <MainCardList dataList={movies.popular} textField="Em alta"/>
 
+            <MainCardList dataList={movies.popularTwo} textField="Em destaque"/>
+
             <MainCardList dataList={ movies.nowPlaying } textField="Lançamentos" />
 
             <MainCardList dataList={ movies.topRated } textField="Filmes premiados" />
+
+            <MainCardList dataList={ movies.topRatedTwo } textField="Filmes conceituados" />
 
         </Grid>
   )

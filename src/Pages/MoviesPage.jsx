@@ -20,8 +20,10 @@ const useStyles = makeStyles((theme) => ({
 function MoviesPage() {
   const classes = useStyles();
   const [popularMovies, setPopularMovies] = useState([]);
+  const [popularTwo, setPopularTwo] = useState([]);
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const [TopRatedTwo, setTopRatedTwo] = useState([]);
 
   const getRequest = async (request) => {
     const response = await request;
@@ -30,13 +32,19 @@ function MoviesPage() {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const popularM = await getRequest(moviesRequest.getPopular());
+      const popularM = await getRequest(moviesRequest.getPopular(1));
+      const popularTwo = await getRequest(moviesRequest.getPopular(2));
       const nowPlaying = await getRequest(moviesRequest.getNowPlaying());
-      const topM = await getRequest(moviesRequest.getTopRated());
+      const topM = await getRequest(moviesRequest.getTopRated(1));
+      const topTwo = await getRequest(moviesRequest.getTopRated(2));
 
       setPopularMovies(popularM);
+      setPopularTwo(popularTwo);
+
       setNowPlayingMovies(nowPlaying);
+
       setTopRatedMovies(topM);
+      setTopRatedTwo(topTwo);
     }
 
     fetchAll()
@@ -44,8 +52,10 @@ function MoviesPage() {
 
   const movies = {
     popular: popularMovies,
+    popularTwo: popularTwo,
     nowPlaying: nowPlayingMovies,
-    topRated: topRatedMovies
+    topRated: topRatedMovies,
+    topRatedTwo: TopRatedTwo,
   }
 
   return (
