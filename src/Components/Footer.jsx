@@ -34,13 +34,17 @@ function Footer() {
     <footer className={classes.footer}>
       <div className={classes.socialDiv}>
 
-        <IconButton>
-          <GitHub className={classes.social} />
-        </IconButton>
+        <a href="https://github.com/leaob7">
+          <IconButton>
+            <GitHub className={classes.social} />
+          </IconButton>
+        </a>
 
-        <IconButton>
-          <LinkedIn className={classes.social} />
-        </IconButton>
+        <a href="https://www.linkedin.com/in/guilherme-le%C3%A3o-dev/">
+          <IconButton>
+            <LinkedIn className={classes.social} />
+          </IconButton>
+        </a>
 
       </div>
 
