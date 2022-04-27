@@ -43,17 +43,23 @@ const useStyles = makeStyles((theme) => ({
   },
   infoButton: {
     backgroundColor: 'gray',
-    color: 'black',
+    color: 'white',
     fontWeight: 'bold',
     fontSize: '1vw',
-    padding: 10,
+    height: 25,
+    [theme.breakpoints.up('md')] : {
+      height: 50,
+    }
   },
   watchButton: {
     color: 'black',
     fontWeight: 'bold',
     fontSize: '1vw',
     backgroundColor: 'white',
-    padding: 10,
+    height: 25,
+    [theme.breakpoints.up('md')] : {
+      height: 50,
+    }
   }
 }));
 
@@ -65,6 +71,7 @@ function BannerCard({ latest }) {
 
   const dispatch = useDispatch();
   const myListRedux = useSelector((state) => state.NetflixReducer.myList);
+  
   const latestBackground = latest.backdrop_path || latest.poster_path;
 
   const handleOpen = async () => {
@@ -113,7 +120,7 @@ function BannerCard({ latest }) {
           aria-label="show more"
           variant='contained'
         >
-          <InfoOutlinedIcon />
+          <InfoOutlinedIcon style={{ marginRight: 5, height: '5vh' }}/>
           Mais informações
         </Button>
 

@@ -19,12 +19,14 @@ const useStyles = makeStyles((theme) => ({
     height: '6vh',
     display: 'flex',
     justifyContent: 'space-between',
+    alignItems: 'center',
     transition: '1.5s'
   },
   darkBar: {
     minHeight: '1vh',
     height: '6vh',
     display: 'flex',
+    alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: 'black',
     transition: '1.5s'
@@ -56,14 +58,23 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   searched: {
     display: 'flex',
-    border: 'solid white 0.5px',
-    borderRadius: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  searchDiv: {
+    height: '100%',
+    border: 'white solid 0.5px',
+    marginRight: 10,
+    backgroundColor: theme.palette.primary.dark,
+    transition: '1s',
   },
   searchIcon: {
-    height: '1.5vh',
+    height: '2vh',
     color: 'white',
     pointerEvents: 'none',
     display: 'flex',
@@ -71,11 +82,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   inputRoot: {
+    height: '100%',
     color: 'inherit',
     backgroundColor: theme.palette.primary.dark,
   },
   inputInput: {
-    marginRight: 10,
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(0)}px)`,
     transition: theme.transitions.create('width'),
@@ -150,22 +161,27 @@ function MainTopBar() {
 
 
           <div className={ search ? classes.searched : classes.search }>
+
+            <div className={ search && classes.searchDiv }>
+
+              <Button
+                onClick={ () => setSearch(!search) }       
+              >
+                <SearchIcon className={ classes.searchIcon } />
+
+              </Button>
+
+              { search && 
+                <InputBase
+                  placeholder="Títulos…"
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                  }}
+                />}
+
+            </div>
             
-            <Button
-              onClick={ () => setSearch(!search) }       
-            >
-              <SearchIcon className={ classes.searchIcon } />
-
-            </Button>
-
-            { search && 
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-              />}
 
             <img
               src="https://avatars.githubusercontent.com/u/6759280?v=4"

@@ -45,8 +45,6 @@ function MainBanner({ path }) {
 
         const sliced = [...series.results.slice(1, 5), ...movies.results.slice(1, 5)];
 
-        console.log(sliced);
-
         setLatest(sliced[random]);
       }
 
