@@ -11,15 +11,11 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     backgroundSize: '100% 100%',
     backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-end',
-    [theme.breakpoints.up('md')]: {
-      height: 800,
-      width: '100%',
-      backgroundSize: '100% 100%',
-    }
   },
   btnDiv: {
     marginBottom: '15vh',
@@ -28,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   bannerTitle: {
     paddingLeft: theme.spacing(4),
     marginTop: '25vh',
-    fontSize: '10vw',
+    fontSize: '5vw',
     fontFamily: 'netflix',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
@@ -53,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 function BannerCard({ latest }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  const latestBackground = latest.poster_path ? latest.poster_path : latest.backdrop_path;
+  const latestBackground = latest.backdrop_path || latest.poster_path;
   
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -66,7 +62,7 @@ function BannerCard({ latest }) {
     >
 
         <Typography className={ classes.bannerTitle }>
-          {latest.name}
+          {latest.title || latest.name}
         </Typography>
 
       <CardActions className={ classes.btnDiv }>
