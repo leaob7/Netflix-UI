@@ -36,8 +36,8 @@ function MainPage() {
       const nowPlaying = await getRequest(moviesRequest.getNowPlaying());
       const topM = await getRequest(moviesRequest.getTopRated());
 
-      const popularS = await getRequest(seriesRequest.getPopular(1));
       const topS = await getRequest(seriesRequest.getTopRated(1));
+      const popularS = await getRequest(seriesRequest.getTopRated(5));
 
       setPopularMovies(popularM);
       setNowPlayingMovies(nowPlaying);

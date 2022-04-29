@@ -32,11 +32,11 @@ function SeriesPage() {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const popular = await getRequest(seriesRequest.getPopular(1));
-      const popularPageTwo = await getRequest(seriesRequest.getPopular(2));
-      const popularPageThree = await getRequest(seriesRequest.getPopular(3));
       const top = await getRequest(seriesRequest.getTopRated(1));
       const topTwo = await getRequest(seriesRequest.getTopRated(2));
+      const popular = await getRequest(seriesRequest.getTopRated(3));
+      const popularPageTwo = await getRequest(seriesRequest.getTopRated(4));
+      const popularPageThree = await getRequest(seriesRequest.getTopRated(5));
 
       setPopularSeries(popular);
       setPopularTwo(popularPageTwo);

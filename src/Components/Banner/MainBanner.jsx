@@ -30,7 +30,7 @@ function MainBanner({ path }) {
 
     const getRequest = async (local) => {
       if (local === 'series') {
-        const series = await seriesRequests.getPopular();
+        const series = await seriesRequests.getTopRated(2);
         setLatest(series.results[random]);
       }
 
@@ -40,7 +40,7 @@ function MainBanner({ path }) {
       }
 
       if (local === 'main') {
-        const series = await seriesRequests.getPopular();
+        const series = await seriesRequests.getTopRated(1);
         const movies = await moviesRequest.getPopular();
 
         const sliced = [...series.results.slice(1, 5), ...movies.results.slice(1, 5)];
