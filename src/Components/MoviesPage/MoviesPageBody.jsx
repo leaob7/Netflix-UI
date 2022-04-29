@@ -16,15 +16,15 @@ function MoviesPageBody({ movies }) {
 
             <MainBanner path="movies"/> 
 
-            <MainCardList dataList={movies.popular} textField="Em alta"/>
+            <MainCardList dataList={movies.popular} textField="Em alta" listType="movie"/>
 
-            <MainCardList dataList={movies.popularTwo} textField="Em destaque"/>
+            <MainCardList dataList={movies.popularTwo} textField="Em destaque" listType="movie"/>
 
-            <MainCardList dataList={ movies.nowPlaying } textField="Lançamentos" />
+            <MainCardList dataList={ movies.nowPlaying } textField="Lançamentos" listType="movie"/>
 
-            <MainCardList dataList={ movies.topRated } textField="Filmes premiados" />
+            <MainCardList dataList={ movies.topRated } textField="Filmes premiados" listType="movie"/>
 
-            <MainCardList dataList={ movies.topRatedTwo } textField="Filmes conceituados" />
+            <MainCardList dataList={ movies.topRatedTwo } textField="Filmes conceituados" listType="movie"/>
 
         </Grid>
   )

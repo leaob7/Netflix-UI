@@ -146,7 +146,7 @@ const seriesRequests = new SeriesRequests();
 
 function MidiaCard({ cardData, type }) {
   const classes = useStyles();
-  const [cardDetails, setCardDetails] = useState({});
+  const [cardDetails, setCardDetails] = useState(false);
   const [cardStyle, setCardStyle] = useState(false);
   const [addList, setAddList] = useState(false);
   const [open, setOpen] = useState(false);
@@ -192,7 +192,10 @@ function MidiaCard({ cardData, type }) {
   
         setCardDetails(details);
       }
+
     }
+
+    
 
     handleDetails();
 

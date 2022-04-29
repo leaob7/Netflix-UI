@@ -38,7 +38,7 @@ function MyListBody ({ myList }) {
           {
             myList.map((midia) => (
               
-              <MidiaCard cardData={midia}/>
+              <MidiaCard cardData={midia} />
 
             ))
           }
