@@ -74,6 +74,10 @@ function BannerCard({ latest }) {
   
   const latestBackground = latest.backdrop_path || latest.poster_path;
 
+  const getReleaseYear = (string) => {
+    return string && string.slice(0, 4);
+  }
+
   const handleOpen = async () => {
     setOpen(true);
     window.history.pushState(null, null, `?${latest.id}`);
@@ -183,7 +187,7 @@ function BannerCard({ latest }) {
                 <div style={{ display: 'flex', alignSelf: 'flex-start', marginLeft: 25, marginTop: 25 }}>
 
                   <Typography className={modalClasses.infoText}>
-                    {latest.release_date || latest.first_air_date}
+                    {  getReleaseYear(latest.release_date) || getReleaseYear(latest.first_air_date) }
                   </Typography>
 
                   <Typography className={modalClasses.infoText}>

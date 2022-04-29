@@ -146,6 +146,10 @@ function MidiaCard({ cardData }) {
   const dispatch = useDispatch();
   const myListRedux = useSelector((state) => state.NetflixReducer.myList);
 
+  const getReleaseYear = (date) => {
+    return date && date.slice(0, 4);
+  }
+
   const handleOpen = async () => {
     setOpen(true);
     window.history.pushState(null, null, `?${cardData.id}`);
@@ -263,7 +267,7 @@ function MidiaCard({ cardData }) {
                 <div style={{ display: 'flex', alignSelf: 'flex-start', marginLeft: 25, marginTop: 25 }}>
 
                   <Typography className={classes.infoText}>
-                    {cardData.release_date || cardData.first_air_date}
+                    { getReleaseYear(cardData.release_date) || getReleaseYear(cardData.first_air_date) }
                   </Typography>
 
                   <Typography className={classes.infoText}>
