@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Button,
@@ -13,6 +13,8 @@ import {
 } from '@material-ui/core';
 import { PlayCircleOutline, ControlPoint, ExpandMore, Add, Check } from '@material-ui/icons';
 import PlayArrowSharpIcon from '@material-ui/icons/PlayArrowSharp';
+import MoviesRequests from '../API/MoviesApiRequest';
+import SeriesRequests from '../API/SeriesApiRequest';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const useStyles = makeStyles((theme) => ({
@@ -138,11 +140,17 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MidiaCard({ cardData }) {
+const moviesRequests = new MoviesRequests();
+const seriesRequests = new SeriesRequests();
+
+
+function MidiaCard({ cardData, type }) {
   const classes = useStyles();
+  const [cardDetails, setCardDetails] = useState({});
   const [cardStyle, setCardStyle] = useState(false);
   const [addList, setAddList] = useState(false);
   const [open, setOpen] = useState(false);
+
   const dispatch = useDispatch();
   const myListRedux = useSelector((state) => state.NetflixReducer.myList);
 
@@ -169,6 +177,26 @@ function MidiaCard({ cardData }) {
       dispatch({ type: 'ADD_MYLIST', payload: cardData });
     }
   }
+
+  useEffect(() => {
+
+    const handleDetails = async () => {
+      if (type === 'serie') {
+        const details = await seriesRequests.getDetails(cardData.id);
+  
+        setCardDetails(details);
+      }
+  
+      if (type === 'movie') {
+        const details = await moviesRequests.getDetails(cardData.id);
+  
+        setCardDetails(details);
+      }
+    }
+
+    handleDetails();
+
+  }, [type, cardData.id])
 
   return (
     <Card
@@ -286,7 +314,7 @@ function MidiaCard({ cardData }) {
                   </Typography>
 
                   <Typography className={classes.infoGenres} >
-                    Generos: {cardData.genre_ids}
+                    Generos: {cardDetails && cardDetails.genres.map((d) => `${d.name} `)}
                   </Typography>
 
                 </div>

@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   }
 })
 
-function MainCardList({ dataList, textField }) {
+function MainCardList({ dataList, textField, listType }) {
   const movies = dataList.slice(0, 10);
   const [scrollX, setScrollX] = useState(-400);
   const classes = useStyles();
@@ -83,7 +83,7 @@ function MainCardList({ dataList, textField }) {
 
         { movies.map((movie) => ( 
           
-          <MidiaCard key={movie.id} cardData={movie} />
+          <MidiaCard key={movie.id} cardData={movie} type={listType} />
           
           )) }
 
