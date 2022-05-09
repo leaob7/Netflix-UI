@@ -34,20 +34,10 @@ function MainBanner({ path }) {
         setLatest(series.results[random]);
       }
 
-      if (local === 'movies') {
+      if (local === 'movies' || local === 'main') {
         const movies = await moviesRequest.getPopular();
         setLatest(movies.results[random]);
       }
-
-      if (local === 'main') {
-        const series = await seriesRequests.getTopRated(1);
-        const movies = await moviesRequest.getPopular();
-
-        const sliced = [...series.results.slice(1, 5), ...movies.results.slice(1, 5)];
-
-        setLatest(sliced[random]);
-      }
-
 
     }
 
