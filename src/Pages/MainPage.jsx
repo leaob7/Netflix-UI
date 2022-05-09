@@ -3,8 +3,10 @@ import MoviesRequests from '../API/MoviesApiRequest';
 import SeriesRequests from '../API/SeriesApiRequest';
 import MainTopBar from '../Components/MainPage/MainTopBar';
 import MainBody from '../Components/MainPage/Body/MainBody';
+import SearchBody from '../Components/Search/SearchBody';
 import { makeStyles } from '@material-ui/core/styles';
 import Footer from '../Components/Footer';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +26,8 @@ function MainPage() {
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [popularSeries, setPopularSeries] = useState([]);
   const [topRatedSeries, setTopRatedSeries] = useState([]);
+
+  const globalSearch = useSelector((state) => state.NetflixReducer.globalSearch);
 
   const getRequest = async (request) => {
     const response = await request;
@@ -64,7 +68,7 @@ function MainPage() {
     return (
       <div className={ classes.root }>
         <MainTopBar />
-        <MainBody MoviesData={ movies } SeriesData={ series }/>
+        { globalSearch ? <SearchBody searchData={ movies } /> : <MainBody MoviesData={ movies } SeriesData={ series }/>}
         <Footer />
       </div>
     )

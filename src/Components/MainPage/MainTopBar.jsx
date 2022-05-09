@@ -9,6 +9,8 @@ import {
 import SearchIcon from '@material-ui/icons/Search';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setGlobalSearch, setSearchValue } from '../../actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -109,6 +111,10 @@ const useStyles = makeStyles((theme) => ({
 function MainTopBar() {
   const [search, setSearch] = useState(false);
   const [blacked, setBlacked] = useState(false);
+
+  const dispatch = useDispatch();
+  const searchValue = useSelector((state) => state.NetflixReducer.searchValue);
+
   const classes = useStyles();
 
   useEffect(() => {
@@ -126,6 +132,10 @@ function MainTopBar() {
       window.removeEventListener('scroll', scrollListener);
     }
   }, [])
+
+  useEffect(() => {
+     searchValue.length > 0 ? dispatch(setGlobalSearch(true)) : dispatch(setGlobalSearch(false));
+  }, [searchValue.length, dispatch])
 
   return (
       <AppBar position="fixed" color='transparent' style={{ boxShadow: 'none' }}>
@@ -178,6 +188,7 @@ function MainTopBar() {
                     root: classes.inputRoot,
                     input: classes.inputInput,
                   }}
+                  onChange={ (e) => dispatch(setSearchValue(e.target.value)) }
                 />}
 
             </div>
