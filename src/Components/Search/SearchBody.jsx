@@ -7,7 +7,11 @@ import { useEffect, useState } from 'react';
 const useStyles = makeStyles((theme) => ({
   root: {
     paddingTop: 200,
-    height: '100vh'
+    width: '100%',
+    height: '100%'
+  },
+  data: {
+    margin: 50,
   },
   title: {
     margin: 15,
@@ -24,8 +28,17 @@ function SearchBody ({ searchData }) {
   const searchValue = useSelector((state) => state.NetflixReducer.searchValue);
 
   useEffect(() => {
-      const searchFilter = searchData.popular.filter((data) =>
-      data.title.toUpperCase().includes(searchValue.toUpperCase()));
+      const searchFilter = searchData.filter((data) => {
+        if (data.title) {
+          return data.title.toUpperCase().includes(searchValue.toUpperCase());
+        }
+
+        if (data.name) {
+          return data.name.toUpperCase().includes(searchValue.toUpperCase());
+        }
+
+        return data;
+      })
   
       setFilterData(searchFilter);
 
@@ -34,8 +47,7 @@ function SearchBody ({ searchData }) {
   return (
     <Grid
     container
-    direction='column'
-    alignItems='center'
+    justifyContent='center'
     className={classes.root}
     >
         <Typography className={classes.title}>
@@ -45,14 +57,16 @@ function SearchBody ({ searchData }) {
         <Grid
             container
             justifyContent='center'
+            wrap='wrap'
+            className={classes.data}
         >
 
           {
-            filterData ? filterData.map((midia) => (
+            filterData && filterData.map((midia) => (
               
               <MidiaCard cardData={midia} />
 
-            )) : null
+            ))
           }
         </Grid>
 

@@ -65,10 +65,12 @@ function MainPage() {
     topRated: topRatedSeries,
   }
 
+  const searchData = [...movies.popular, ...movies.topRated, ...series.popular, ...series.topRated];
+
     return (
       <div className={ classes.root }>
         <MainTopBar />
-        { globalSearch ? <SearchBody searchData={ movies } /> : <MainBody MoviesData={ movies } SeriesData={ series }/>}
+        { globalSearch ? <SearchBody searchData={ searchData } /> : <MainBody MoviesData={ movies } SeriesData={ series }/>}
         <Footer />
       </div>
     )

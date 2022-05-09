@@ -32,6 +32,7 @@ export const useStyles = makeStyles((theme) => ({
     width: 300,
     marginLeft: 15,
     marginRight: 15,
+    marginBottom: 15,
     transition: '1s'
   },
   media: {
