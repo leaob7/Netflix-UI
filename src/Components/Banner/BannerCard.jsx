@@ -14,6 +14,7 @@ import {
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import PlayArrowSharpIcon from '@material-ui/icons/PlayArrowSharp';
 import { Check, Add } from '@material-ui/icons';
+import MoviesRequests from '../../API/MoviesApiRequest';
 import { useStyles as ModalStyles } from '../MidiaCard';
 
 const useStyles = makeStyles((theme) => ({
@@ -63,11 +64,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const moviesRequests = new MoviesRequests();
+
 function BannerCard({ latest }) {
   const classes = useStyles();
   const modalClasses = ModalStyles();
   const [open, setOpen] = useState(false);
   const [addList, setAddList] = useState(false);
+  const [cardDetails, setCardDetails] = useState(false);
 
   const dispatch = useDispatch();
   const myListRedux = useSelector((state) => state.NetflixReducer.myList);
@@ -80,11 +84,14 @@ function BannerCard({ latest }) {
 
   const handleOpen = async () => {
     setOpen(true);
+
+    const details = await moviesRequests.getDetails(latest.id);
+    setCardDetails(details);
+
     window.history.pushState(null, null, `?${latest.id}`);
   };
 
   const handleClose = () => {
-    console.log(window.history.go);
     setOpen(false);
     window.history.pushState(null, null, window.history.back());
   };
@@ -206,7 +213,7 @@ function BannerCard({ latest }) {
                   </Typography>
 
                   <Typography className={modalClasses.infoGenres} >
-                    Generos: {latest.genre_ids}
+                    Generos: {cardDetails && cardDetails.genres.map((d) => `${d.name} `)}
                   </Typography>
 
                 </div>

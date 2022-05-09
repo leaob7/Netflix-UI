@@ -34,7 +34,7 @@ function MainBanner({ path }) {
         setLatest(series.results[random]);
       }
 
-      if (local === 'movies' || local === 'main') {
+      if (local === 'main' || local === 'movies') {
         const movies = await moviesRequest.getPopular();
         setLatest(movies.results[random]);
       }
