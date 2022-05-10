@@ -1,6 +1,6 @@
 import MidiaCard from '../../Components/MidiaCard';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
@@ -8,18 +8,15 @@ const useStyles = makeStyles((theme) => ({
   root: {
     paddingTop: 200,
     width: '100%',
-    height: '100%'
+    height: '100%',
   },
   data: {
-    margin: 50,
+    marginLeft: 50,
+    marginRight: 50,
+    marginBottom: '20%',
+    minHeight: '100%',
+    height: '100%',
   },
-  title: {
-    margin: 15,
-    fontSize: '2vw',
-    fontWeight: 'bold',
-    color: 'white',
-    justifySelf: 'end',
-  }
 }));
 
 function SearchBody ({ searchData }) {
@@ -50,9 +47,6 @@ function SearchBody ({ searchData }) {
     justifyContent='center'
     className={classes.root}
     >
-        <Typography className={classes.title}>
-          { searchValue }
-        </Typography>
 
         <Grid
             container

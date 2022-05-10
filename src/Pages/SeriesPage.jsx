@@ -4,6 +4,9 @@ import Footer from "../Components/Footer";
 import MainTopBar from "../Components/MainPage/MainTopBar";
 import SeriesRequests from '../API/SeriesApiRequest';
 import SeriesPageBody from '../Components/SeriesPage/SeriesPageBody';
+import { useSelector } from 'react-redux';
+import SearchBody from '../Components/Search/SearchBody';
+
 
 const seriesRequest = new SeriesRequests();
 
@@ -24,6 +27,9 @@ function SeriesPage() {
   const [popularThree, setPopularThree] = useState([]);
   const [topRatedSeries, setTopRatedSeries] = useState([]);
   const [topRatedTwo, setTopRatedTwo] = useState([]);
+
+  const globalSearch = useSelector((state) => state.NetflixReducer.globalSearch);
+
 
   const getRequest = async (request) => {
     const response = await request;
@@ -59,7 +65,7 @@ function SeriesPage() {
   return (
     <div className={ classes.root }>
       <MainTopBar />
-      <SeriesPageBody series={series}/>
+      { globalSearch ? <SearchBody /> : <SeriesPageBody series={series}/> }
       <Footer />
   </div>
   )

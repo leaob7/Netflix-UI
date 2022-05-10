@@ -4,6 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Footer from "../Components/Footer";
 import MainTopBar from "../Components/MainPage/MainTopBar";
 import MoviesPageBody from '../Components/MoviesPage/MoviesPageBody';
+import { useSelector } from 'react-redux';
+import SearchBody from '../Components/Search/SearchBody';
+
 
 const moviesRequest = new MoviesRequests();
 
@@ -24,6 +27,9 @@ function MoviesPage() {
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [TopRatedTwo, setTopRatedTwo] = useState([]);
+
+  const globalSearch = useSelector((state) => state.NetflixReducer.globalSearch);
+
 
   const getRequest = async (request) => {
     const response = await request;
@@ -61,7 +67,7 @@ function MoviesPage() {
   return (
     <div className={ classes.root }>
       <MainTopBar />
-      <MoviesPageBody movies={movies}/>
+      {globalSearch ? <SearchBody /> : <MoviesPageBody movies={movies}/>}
       <Footer />
     </div>
   )

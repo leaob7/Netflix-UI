@@ -10,7 +10,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setGlobalSearch, setSearchValue } from '../../actions';
+import { setGlobalSearch, setSearchValue } from '../../redux/actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -117,6 +117,8 @@ function MainTopBar() {
 
   const classes = useStyles();
 
+  const localpath = window.location.pathname === '/browse';
+
   useEffect(() => {
     const scrollListener = () => {
       if(window.scrollY > 20) {
@@ -143,7 +145,11 @@ function MainTopBar() {
 
         <div className={ classes.topNav }>
 
-          <Link to="/browse" style={{ textDecoration: 'none' }}>
+          <Link
+            to="/browse"
+            style={{ textDecoration: 'none' }}
+            onClick={() => localpath && window.location.reload()}
+          >
             <Typography className={ classes.title } color='primary'>
               N E T F L I X
             </Typography>
