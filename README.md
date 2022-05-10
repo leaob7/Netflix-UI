@@ -5,7 +5,7 @@ Acesse em:
 # Descrição
 
 Projeto simulando a interface da aplicação web da Netflix utilizando javascript com React.js, Redux, Hooks e Material-UI.
-O objetivo foi por em prática os conhecimentos de gerenciamento de estado e React.
+O objetivo foi fazer uma réplica ( não idêntica ) pondo em prática os conhecimentos de gerenciamento de estado e React.
 
 # Tecnologias utilizadas
 - React.js
