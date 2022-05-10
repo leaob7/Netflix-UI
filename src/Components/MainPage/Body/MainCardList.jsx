@@ -74,6 +74,7 @@ function MainCardList({ dataList, textField, listType }) {
           alignItems: "center",
           justifyContent: 'center',
           marginLeft: scrollX,
+          transition: '2s',
         }}
       >
 

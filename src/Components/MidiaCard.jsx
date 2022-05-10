@@ -165,8 +165,8 @@ function MidiaCard({ cardData, type }) {
   };
 
   const handleClose = () => {
-    console.log(window.history.go);
     setOpen(false);
+    setCardStyle(false);
     window.history.pushState(null, null, window.history.back());
   };
 
