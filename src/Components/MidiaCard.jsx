@@ -141,10 +141,6 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const moviesRequests = new MoviesRequests();
-const seriesRequests = new SeriesRequests();
-
-
 function MidiaCard({ cardData, type }) {
   const classes = useStyles();
   const [cardDetails, setCardDetails] = useState(false);
@@ -183,13 +179,13 @@ function MidiaCard({ cardData, type }) {
 
     const handleDetails = async () => {
       if (type === 'serie') {
-        const details = await seriesRequests.getDetails(cardData.id);
+        const details = await SeriesRequests.getDetails(cardData.id);
   
         setCardDetails(details);
       }
   
       if (type === 'movie') {
-        const details = await moviesRequests.getDetails(cardData.id);
+        const details = await MoviesRequests.getDetails(cardData.id);
   
         setCardDetails(details);
       }

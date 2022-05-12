@@ -18,9 +18,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const seriesRequests = new SeriesRequests();
-const moviesRequest = new MoviesRequests();
-
 function MainBanner({ path }) {
   const [latest, setLatest] = useState({});
   const classes = useStyles();
@@ -30,12 +27,12 @@ function MainBanner({ path }) {
 
     const getRequest = async (local) => {
       if (local === 'series') {
-        const series = await seriesRequests.getTopRated(2);
+        const series = await SeriesRequests.getTopRated(2);
         setLatest(series.results[random]);
       }
 
       if (local === 'main' || local === 'movies') {
-        const movies = await moviesRequest.getPopular();
+        const movies = await MoviesRequests.getPopular();
         setLatest(movies.results[random]);
       }
 

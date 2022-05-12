@@ -7,9 +7,6 @@ import MoviesPageBody from '../Components/MoviesPage/MoviesPageBody';
 import { useSelector } from 'react-redux';
 import SearchBody from '../Components/Search/SearchBody';
 
-
-const moviesRequest = new MoviesRequests();
-
 const useStyles = makeStyles((theme) => ({
   root: {
     background: theme.palette.primary.dark,
@@ -38,11 +35,11 @@ function MoviesPage() {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const popularM = await getRequest(moviesRequest.getPopular(1));
-      const popularTwo = await getRequest(moviesRequest.getPopular(2));
-      const nowPlaying = await getRequest(moviesRequest.getNowPlaying());
-      const topM = await getRequest(moviesRequest.getTopRated(1));
-      const topTwo = await getRequest(moviesRequest.getTopRated(2));
+      const popularM = await getRequest(MoviesRequests.getPopular(1));
+      const popularTwo = await getRequest(MoviesRequests.getPopular(2));
+      const nowPlaying = await getRequest(MoviesRequests.getNowPlaying());
+      const topM = await getRequest(MoviesRequests.getTopRated(1));
+      const topTwo = await getRequest(MoviesRequests.getTopRated(2));
 
       setPopularMovies(popularM);
       setPopularTwo(popularTwo);

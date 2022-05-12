@@ -64,8 +64,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const moviesRequests = new MoviesRequests();
-
 function BannerCard({ latest }) {
   const classes = useStyles();
   const modalClasses = ModalStyles();
@@ -85,7 +83,7 @@ function BannerCard({ latest }) {
   const handleOpen = async () => {
     setOpen(true);
 
-    const details = await moviesRequests.getDetails(latest.id);
+    const details = await MoviesRequests.getDetails(latest.id);
     setCardDetails(details);
 
     window.history.pushState(null, null, `?${latest.id}`);

@@ -18,9 +18,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const moviesRequest = new MoviesRequests();
-const seriesRequest = new SeriesRequests();
-
 function MainPage() {
   const classes = useStyles();
   const [popularMovies, setPopularMovies] = useState([]);
@@ -40,14 +37,14 @@ function MainPage() {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const popularM = await getRequest(moviesRequest.getPopular());
-      const nowPlaying = await getRequest(moviesRequest.getNowPlaying());
-      const topM = await getRequest(moviesRequest.getTopRated());
+      const popularM = await getRequest(MoviesRequests.getPopular());
+      const nowPlaying = await getRequest(MoviesRequests.getNowPlaying());
+      const topM = await getRequest(MoviesRequests.getTopRated());
 
       dispatch(setSearchData([...popularM, ...nowPlaying, ...topM]))
 
-      const topS = await getRequest(seriesRequest.getTopRated(1));
-      const popularS = await getRequest(seriesRequest.getTopRated(5));
+      const topS = await getRequest(SeriesRequests.getTopRated(1));
+      const popularS = await getRequest(SeriesRequests.getTopRated(5));
 
       setPopularMovies(popularM);
       setNowPlayingMovies(nowPlaying);
@@ -58,8 +55,6 @@ function MainPage() {
     }
 
     fetchAll();
-
-    dispatch(setSearchData());
   }, [dispatch])
 
   const movies = {

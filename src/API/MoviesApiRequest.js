@@ -32,4 +32,4 @@ class MoviesRequests {
 
 }
 
-export default MoviesRequests;
+export default new MoviesRequests();

@@ -21,4 +21,4 @@ class SeriesRequests {
 
 }
 
-export default SeriesRequests;
+export default new SeriesRequests();

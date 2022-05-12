@@ -7,9 +7,6 @@ import SeriesPageBody from '../Components/SeriesPage/SeriesPageBody';
 import { useSelector } from 'react-redux';
 import SearchBody from '../Components/Search/SearchBody';
 
-
-const seriesRequest = new SeriesRequests();
-
 const useStyles = makeStyles((theme) => ({
   root: {
     background: theme.palette.primary.dark,
@@ -38,11 +35,11 @@ function SeriesPage() {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const top = await getRequest(seriesRequest.getTopRated(1));
-      const topTwo = await getRequest(seriesRequest.getTopRated(2));
-      const popular = await getRequest(seriesRequest.getTopRated(3));
-      const popularPageTwo = await getRequest(seriesRequest.getTopRated(4));
-      const popularPageThree = await getRequest(seriesRequest.getTopRated(5));
+      const top = await getRequest(SeriesRequests.getTopRated(1));
+      const topTwo = await getRequest(SeriesRequests.getTopRated(2));
+      const popular = await getRequest(SeriesRequests.getTopRated(3));
+      const popularPageTwo = await getRequest(SeriesRequests.getTopRated(4));
+      const popularPageThree = await getRequest(SeriesRequests.getTopRated(5));
 
       setPopularSeries(popular);
       setPopularTwo(popularPageTwo);
