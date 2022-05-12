@@ -2,6 +2,7 @@ const INITIAL_STATE = {
       myList: [],
       globalSearch: false,
       searchValue: '',
+      searchData: [],
 }
 
 function NetflixReducer(state= INITIAL_STATE, action) {
@@ -21,6 +22,12 @@ function NetflixReducer(state= INITIAL_STATE, action) {
               ...state,
               searchValue: action.payload,
             }
+        }
+        case 'SET_SEARCH_DATA': {
+          return {
+            ...state,
+            searchData: action.payload,
+          }
         }
     default: 
       return state;

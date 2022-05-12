@@ -6,7 +6,9 @@ import MainBody from '../Components/MainPage/Body/MainBody';
 import SearchBody from '../Components/Search/SearchBody';
 import { makeStyles } from '@material-ui/core/styles';
 import Footer from '../Components/Footer';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearchData } from '../redux/actions';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +29,8 @@ function MainPage() {
   const [popularSeries, setPopularSeries] = useState([]);
   const [topRatedSeries, setTopRatedSeries] = useState([]);
 
+  const dispatch = useDispatch();
+
   const globalSearch = useSelector((state) => state.NetflixReducer.globalSearch);
 
   const getRequest = async (request) => {
@@ -40,6 +44,8 @@ function MainPage() {
       const nowPlaying = await getRequest(moviesRequest.getNowPlaying());
       const topM = await getRequest(moviesRequest.getTopRated());
 
+      dispatch(setSearchData([...popularM, ...nowPlaying, ...topM]))
+
       const topS = await getRequest(seriesRequest.getTopRated(1));
       const popularS = await getRequest(seriesRequest.getTopRated(5));
 
@@ -51,8 +57,10 @@ function MainPage() {
       setTopRatedSeries(topS);
     }
 
-    fetchAll()
-  }, [])
+    fetchAll();
+
+    dispatch(setSearchData());
+  }, [dispatch])
 
   const movies = {
     popular: popularMovies,
@@ -65,12 +73,10 @@ function MainPage() {
     topRated: topRatedSeries,
   }
 
-  const searchData = [...movies.popular, ...movies.topRated, ...series.popular, ...series.topRated];
-
     return (
       <div className={ classes.root }>
         <MainTopBar />
-        { globalSearch ? <SearchBody searchData={ searchData } /> : <MainBody MoviesData={ movies } SeriesData={ series }/>}
+        { globalSearch ? <SearchBody /> : <MainBody MoviesData={ movies } SeriesData={ series }/>}
         <Footer />
       </div>
     )

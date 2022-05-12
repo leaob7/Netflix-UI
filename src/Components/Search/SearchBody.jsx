@@ -19,10 +19,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SearchBody ({ searchData }) {
+function SearchBody () {
   const classes = useStyles();
   const [filterData, setFilterData] = useState();
   const searchValue = useSelector((state) => state.NetflixReducer.searchValue);
+  const searchData = useSelector((state) => state.NetflixReducer.searchData);
 
   useEffect(() => {
       const searchFilter = searchData.filter((data) => {
