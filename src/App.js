@@ -7,6 +7,7 @@ import MainPage from './Pages/MainPage';
 import MoviesPage from './Pages/MoviesPage';
 import SeriesPage from './Pages/SeriesPage';
 import MyListPage from './Pages/MyListPage';
+import { useEffect } from 'react';
 
 const theme = createTheme({
   typography: {
@@ -27,7 +28,13 @@ const theme = createTheme({
   },
 });
 
+
 function App() {
+
+  useEffect(() => {
+    document.title = 'Netflix UI';
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <Routes>
