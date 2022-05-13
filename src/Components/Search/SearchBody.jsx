@@ -8,14 +8,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     paddingTop: 200,
     width: '100%',
-    height: '100%',
   },
   data: {
     marginLeft: 50,
     marginRight: 50,
-    marginBottom: '20%',
-    minHeight: '100%',
-    height: '100%',
+    marginBottom: '400px',
   },
 }));
 
