@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import MoviesRequests from '../API/MoviesApiRequest';
 import { makeStyles } from '@material-ui/core/styles';
 import Footer from "../Components/Footer";
-import MainTopBar from "../Components/MainPage/MainTopBar";
+import MainTopBar from "../Components/MainTopBar";
 import MoviesPageBody from '../Components/MoviesPage/MoviesPageBody';
 import { useSelector } from 'react-redux';
 import SearchBody from '../Components/Search/SearchBody';

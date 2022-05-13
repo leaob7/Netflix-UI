@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import Footer from "../Components/Footer";
-import MainTopBar from "../Components/MainPage/MainTopBar";
+import MainTopBar from "../Components/MainTopBar";
 import MyListBody from "../Components/MyListPage/MyListBody";
 import { makeStyles } from '@material-ui/core/styles';
 import SearchBody from "../Components/Search/SearchBody";

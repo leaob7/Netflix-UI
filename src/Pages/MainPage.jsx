@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MoviesRequests from '../API/MoviesApiRequest';
 import SeriesRequests from '../API/SeriesApiRequest';
-import MainTopBar from '../Components/MainPage/MainTopBar';
+import MainTopBar from '../Components/MainTopBar';
 import MainBody from '../Components/MainPage/Body/MainBody';
 import SearchBody from '../Components/Search/SearchBody';
 import { makeStyles } from '@material-ui/core/styles';

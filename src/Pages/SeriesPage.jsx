@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Footer from "../Components/Footer";
-import MainTopBar from "../Components/MainPage/MainTopBar";
+import MainTopBar from "../Components/MainTopBar";
 import SeriesRequests from '../API/SeriesApiRequest';
 import SeriesPageBody from '../Components/SeriesPage/SeriesPageBody';
 import { useSelector } from 'react-redux';
