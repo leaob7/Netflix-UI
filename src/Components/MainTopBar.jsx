@@ -52,8 +52,8 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: 30,
     paddingTop: 10,
     fontFamily: 'netflix',
-    fontSize: 10,
-    color: 'GrayText',
+    fontSize: 11,
+    color: 'gray',
     '&:hover': {
       color: 'white',
     }
@@ -184,19 +184,19 @@ function MainTopBar() {
           </Link>
 
           <Link to="/browse/series" style={{ textDecoration: 'none' }}>
-            <Typography className={classes.link} color='primary'>
+            <Typography className={classes.link}>
               Series
             </Typography>
           </Link>
 
           <Link to="/browse/movies" style={{ textDecoration: 'none' }}>
-            <Typography className={classes.link} color='primary'>
+            <Typography className={classes.link}>
               Filmes
             </Typography>
           </Link>
 
           <Link to="/my-list" style={{ textDecoration: 'none' }}>
-            <Typography className={classes.link} color='primary'>
+            <Typography className={classes.link}>
               Minha lista
             </Typography>
           </Link>

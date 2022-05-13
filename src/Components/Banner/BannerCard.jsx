@@ -95,7 +95,7 @@ function BannerCard({ latest }) {
   };
 
   const handleAddListData = async () => {
-    setAddList(!addList);
+    setAddList(true);
     if(myListRedux.some((m) => m.id === latest.id)) {
       window.alert('Este conteúdo já está na sua lista');
     } else {
@@ -211,7 +211,13 @@ function BannerCard({ latest }) {
                   </Typography>
 
                   <Typography className={modalClasses.infoGenres} >
-                    Generos: {cardDetails && cardDetails.genres.map((d) => `${d.name} `)}
+                    Generos: {cardDetails && cardDetails.genres.map((d, index) => {
+                      if (index === cardDetails.genres.length - 1) {
+                        return `${d.name} `;
+                      }
+
+                      return  `${d.name}, `;
+                    })}
                   </Typography>
 
                 </div>

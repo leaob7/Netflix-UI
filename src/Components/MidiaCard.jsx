@@ -315,7 +315,13 @@ function MidiaCard({ cardData, type }) {
                   </Typography>
 
                   <Typography className={classes.infoGenres} >
-                    Generos: {cardDetails && cardDetails.genres.map((d) => `${d.name} `)}
+                    Generos: {cardDetails && cardDetails.genres.map((d, index) => {
+                      if (index === cardDetails.genres.length - 1) {
+                        return `${d.name} `;
+                      }
+
+                      return  `${d.name}, `;
+                    })}
                   </Typography>
 
                 </div>
