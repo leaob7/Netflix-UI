@@ -1,6 +1,6 @@
 # Netflix UI
 
-Acesse em: http://netflix-ui-gamma.vercel.app/
+Acesse a aplicação em: http://netflix-ui-gamma.vercel.app/
 
 # Descrição
 
