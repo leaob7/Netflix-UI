@@ -8,6 +8,7 @@ const INITIAL_STATE = {
 function NetflixReducer(state= INITIAL_STATE, action) {
   switch(action.type) {
     case 'ADD_MYLIST':
+      localStorage.setItem('myList', JSON.stringify([...state.myList, action.payload]));
       return {
         ...state,
         myList: [...state.myList, action.payload],

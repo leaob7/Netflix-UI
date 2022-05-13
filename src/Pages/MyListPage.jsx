@@ -4,6 +4,7 @@ import MainTopBar from "../Components/MainPage/MainTopBar";
 import MyListBody from "../Components/MyListPage/MyListBody";
 import { makeStyles } from '@material-ui/core/styles';
 import SearchBody from "../Components/Search/SearchBody";
+import { useEffect, useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,14 +16,20 @@ const useStyles = makeStyles((theme) => ({
 
 function MyListPage() {
   const classes = useStyles();
-  const listFromRedux = useSelector((state) => state.NetflixReducer.myList);
+
+  const [myList, setMyList] = useState([]);
+
   const globalSearch = useSelector((state) => state.NetflixReducer.globalSearch);
 
+
+  useEffect(() => {
+    setMyList(JSON.parse(localStorage.getItem('myList')));
+  }, [])
 
   return (
     <div className={classes.root}>
       <MainTopBar />
-      {globalSearch ? <SearchBody /> : <MyListBody myList={ listFromRedux }/>}
+      {globalSearch ? <SearchBody /> : <MyListBody myList={ myList }/>}
       <Footer />
     </div>
   )

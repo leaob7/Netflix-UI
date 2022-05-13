@@ -105,12 +105,39 @@ const useStyles = makeStyles((theme) => ({
     height: 40,
     width: 40,
     borderRadius: 5,
+    cursor: 'pointer',
+  },
+  avatarMenu: {
+    height: 40,
+    width: 40,
+    borderRadius: 5,
+    cursor: 'pointer',
+    marginTop: 65,
+    marginBottom: 20,
+    marginLeft: 40
+  },
+  menu: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgb(0, 0, 0, 0.6)',
+    fontSize: '15px',
+    width: 120,
+    height: 40
+  },
+  menuItem: {
+    textDecoration: 'none',
+    color: 'white',
+    '&:hover': {
+      textDecoration: 'underline'
+    }
   }
 }));
 
 function MainTopBar() {
   const [search, setSearch] = useState(false);
   const [blacked, setBlacked] = useState(false);
+  const [menu, setMenu] = useState(false);
 
   const dispatch = useDispatch();
   const searchValue = useSelector((state) => state.NetflixReducer.searchValue);
@@ -121,7 +148,7 @@ function MainTopBar() {
 
   useEffect(() => {
     const scrollListener = () => {
-      if(window.scrollY > 20) {
+      if (window.scrollY > 20) {
         setBlacked(true);
       } else {
         setBlacked(false)
@@ -136,39 +163,40 @@ function MainTopBar() {
   }, [])
 
   useEffect(() => {
-     searchValue.length > 0 ? dispatch(setGlobalSearch(true)) : dispatch(setGlobalSearch(false));
+    searchValue.length > 0 ? dispatch(setGlobalSearch(true)) : dispatch(setGlobalSearch(false));
   }, [searchValue.length, dispatch])
 
-  return (
-      <AppBar position="fixed" color='transparent' style={{ boxShadow: 'none' }}>
-        <Toolbar className={ blacked ? classes.darkBar : classes.topBar } >
 
-        <div className={ classes.topNav }>
+  return (
+    <AppBar position="fixed" color='transparent' style={{ boxShadow: 'none' }}>
+      <Toolbar className={blacked ? classes.darkBar : classes.topBar} >
+
+        <div className={classes.topNav}>
 
           <Link
             to="/browse"
             style={{ textDecoration: 'none' }}
             onClick={() => localpath && window.location.reload()}
           >
-            <Typography className={ classes.title } color='primary'>
+            <Typography className={classes.title} color='primary'>
               N E T F L I X
             </Typography>
           </Link>
 
           <Link to="/browse/series" style={{ textDecoration: 'none' }}>
-            <Typography className={ classes.link } color='primary'>
+            <Typography className={classes.link} color='primary'>
               Series
             </Typography>
           </Link>
 
           <Link to="/browse/movies" style={{ textDecoration: 'none' }}>
-            <Typography className={ classes.link } color='primary'>
+            <Typography className={classes.link} color='primary'>
               Filmes
             </Typography>
           </Link>
 
           <Link to="/my-list" style={{ textDecoration: 'none' }}>
-            <Typography className={ classes.link } color='primary'>
+            <Typography className={classes.link} color='primary'>
               Minha lista
             </Typography>
           </Link>
@@ -176,40 +204,54 @@ function MainTopBar() {
         </div>
 
 
-          <div className={ search ? classes.searched : classes.search }>
+        <div className={search ? classes.searched : classes.search}>
 
-            <div className={ search && classes.searchDiv }>
+          <div className={search && classes.searchDiv}>
 
-              <Button
-                onClick={ () => setSearch(!search) }       
-              >
-                <SearchIcon className={ classes.searchIcon } />
+            <Button
+              onClick={() => setSearch(!search)}
+            >
+              <SearchIcon className={classes.searchIcon} />
 
-              </Button>
+            </Button>
 
-              { search && 
-                <InputBase
-                  placeholder="Títulos…"
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }}
-                  onChange={ (e) => dispatch(setSearchValue(e.target.value)) }
-                />}
-
-            </div>
-            
-
-            <img
-              src="https://avatars.githubusercontent.com/u/6759280?v=4"
-              className={classes.avatar}
-              alt="avatar"
-            />
+            {search &&
+              <InputBase
+                placeholder="Títulos…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                onChange={(e) => dispatch(setSearchValue(e.target.value))}
+              />}
 
           </div>
 
-        </Toolbar>
-      </AppBar>
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+
+            <img
+              src="https://avatars.githubusercontent.com/u/6759280?v=4"
+              className={ menu ? classes.avatarMenu  : classes.avatar }
+              alt="avatar"
+              onClick={() => setMenu(!menu)}
+            />
+
+            { menu ? (
+              <div className={classes.menu}>
+                <Link to="/" className={classes.menuItem}>
+                  Sair da netflix
+                </Link>
+              </div>
+            ) : null }
+
+          </div>
+
+
+
+        </div>
+
+      </Toolbar>
+    </AppBar>
   )
 }
 

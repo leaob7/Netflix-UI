@@ -173,6 +173,7 @@ function MidiaCard({ cardData, type }) {
     } else {
       dispatch({ type: 'ADD_MYLIST', payload: cardData });
     }
+
   }
 
   useEffect(() => {
