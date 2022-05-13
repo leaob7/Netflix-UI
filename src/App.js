@@ -28,7 +28,6 @@ const theme = createTheme({
 });
 
 function App() {
-  // Router Pages
   return (
     <ThemeProvider theme={theme}>
       <Routes>
