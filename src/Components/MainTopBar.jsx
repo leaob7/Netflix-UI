@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   topBar: {
+    backgroundColor: 'rgb(0, 0, 0, 0.1)',
     minHeight: '1vh',
     height: '6vh',
     display: 'flex',
@@ -49,13 +50,13 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '2vw',
   },
   link: {
-    paddingLeft: 30,
+    paddingLeft: 40,
     paddingTop: 10,
-    fontFamily: 'netflix',
-    fontSize: 11,
-    color: 'gray',
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: 'white',
     '&:hover': {
-      color: 'white',
+      color: 'rgb(255,255,255, 0.8)',
     }
   },
   search: {
