@@ -36,7 +36,9 @@ function MyListBody ({ myList }) {
         >
 
           {
-            myList.map((midia) => (
+
+            // !important need to fix error on vercel app loading
+            myList && myList.map((midia) => (
               
               <MidiaCard cardData={midia} type="movie" />
 
