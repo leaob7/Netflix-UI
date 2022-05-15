@@ -20,7 +20,7 @@ The Movie DB: https://developers.themoviedb.org/3/getting-started/introduction
 
 # Demonstração
 
-<div align="center">
+<div align="">
     <img src="./initial-page-netflix.png" width="500" height="350" alt="initial-page">
     <img src="./main-page-netflix.png" width="500" height="350" alt="main-page">
 </div>
