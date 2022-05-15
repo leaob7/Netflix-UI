@@ -1,25 +1,52 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import InicialPage from './Pages/InicialPage';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import { netflixFont as netflix } from './fonts/muiFonts';
+import MainPage from './Pages/MainPage';
+import MoviesPage from './Pages/MoviesPage';
+import SeriesPage from './Pages/SeriesPage';
+import MyListPage from './Pages/MyListPage';
+import { useEffect } from 'react';
+
+const theme = createTheme({
+  typography: {
+    fontFamily: 'Arial, netflix',
+  },
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        '@font-face': [netflix],
+      }
+    }
+  },
+  palette: {
+    primary: {
+      main: '#ba000d',
+      dark: 'black'
+    },
+  },
+});
+
 
 function App() {
+
+  useEffect(() => {
+    document.title = 'Netflix UI';
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Routes>
+        <Route path="/" element={ <InicialPage /> }/>
+        <Route path="/browse" element={ <MainPage /> }/>
+        <Route path="/browse/movies" element={ <MoviesPage /> }/>
+        <Route path="/browse/series" element={ <SeriesPage /> }/>
+        <Route path="/my-list" element={ <MyListPage /> }/>
+      </Routes>
+    </ThemeProvider>
   );
 }
 
 export default App;
+
