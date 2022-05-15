@@ -177,26 +177,43 @@ function MainTopBar() {
           <Link
             to="/browse"
             style={{ textDecoration: 'none' }}
-            onClick={() => localpath && window.location.reload()}
+            onClick={() => {
+              if (localpath) {
+                window.location.reload();
+                dispatch(setSearchValue(''));
+              }
+            }}
           >
             <Typography className={classes.title} color='primary'>
               N E T F L I X
             </Typography>
           </Link>
 
-          <Link to="/browse/series" style={{ textDecoration: 'none' }}>
+          <Link
+            to="/browse/series"
+            style={{ textDecoration: 'none' }}
+            onClick={() => dispatch(setSearchValue(''))}
+          >
             <Typography className={classes.link}>
               Series
             </Typography>
           </Link>
 
-          <Link to="/browse/movies" style={{ textDecoration: 'none' }}>
+          <Link
+            to="/browse/movies"
+            style={{ textDecoration: 'none' }}
+            onClick={() => dispatch(setSearchValue(''))}
+          >
             <Typography className={classes.link}>
               Filmes
             </Typography>
           </Link>
 
-          <Link to="/my-list" style={{ textDecoration: 'none' }}>
+          <Link
+            to="/my-list"
+            style={{ textDecoration: 'none' }}
+            onClick={() => dispatch(setSearchValue(''))}
+          >
             <Typography className={classes.link}>
               Minha lista
             </Typography>
