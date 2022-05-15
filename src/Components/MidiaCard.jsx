@@ -66,6 +66,7 @@ export const useStyles = makeStyles((theme) => ({
     boxShadow: 'none',
   },
   paper: {
+    overflowY: 'initial',
     border: '2px solid #000',
     borderRadius: 20,
     width: '90%',
@@ -76,11 +77,12 @@ export const useStyles = makeStyles((theme) => ({
     }
   },
   modalCard: {
+    overflowY: 'auto',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     width: '100%',
-    height: '100%',
+    height: '95%',
     backgroundColor: '#151513'
   },
   modalMedia: {
