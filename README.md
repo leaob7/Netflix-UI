@@ -20,6 +20,12 @@ The Movie DB: https://developers.themoviedb.org/3/getting-started/introduction
 
 # Demonstração
 
+<div align="center">
+    <img src="./initial-page-netflix.png" width="500" height="350" alt="initial-page">
+    <img src="./main-page-netflix.png" width="500" height="350" alt="main-page">
+    <img src="./my-list-netflix.png" width="500" height="350" alt="my-list-page">
+</div>
+
 # Autor
 
   <a href = "mailto:leaob7@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
