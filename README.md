@@ -14,6 +14,10 @@ O objetivo foi fazer uma réplica ( não idêntica ) pondo em prática os conhec
 - Hooks
 - Material-UI
 
+# APIs
+
+The Movie DB: https://developers.themoviedb.org/3/getting-started/introduction
+
 # Demonstração
 
 # Autor
