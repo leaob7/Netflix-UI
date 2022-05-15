@@ -56,7 +56,7 @@ function SearchBody () {
           {
             filterData && filterData.map((midia) => (
               
-              <MidiaCard cardData={midia} />
+              <MidiaCard cardData={midia} type="movie" />
 
             ))
           }
