@@ -4,8 +4,9 @@ Acesse a aplicação em: http://netflix-ui-gamma.vercel.app/
 
 # Descrição
 
-Projeto simulando a interface da aplicação web da Netflix utilizando javascript com React.js, Redux, Hooks e Material-UI.
-O objetivo foi fazer uma réplica ( não idêntica ) pondo em prática os conhecimentos de gerenciamento de estado e React.
+Projeto simulando a interface da aplicação web da Netflix utilizando javascript com React.js, Redux, Hooks e Material-UI. <br><br>
+O objetivo foi fazer uma réplica ( não idêntica ) pondo em prática os conhecimentos de gerenciamento de estado e React. <br><br>
+Você é capaz de: navegar entre páginas, pesquisar títulos pelo nome, ver informações individuais de cada título e salvar em sua lista os títulos que desejar.
 
 # Tecnologias utilizadas
 - React.js
