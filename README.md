@@ -27,5 +27,6 @@ The Movie DB: https://developers.themoviedb.org/3/getting-started/introduction
   
   ---
   
-  Versão focada apenas para navegadores não mobile.
+  Versão focada apenas para navegadores não mobile. <br>
+  Status: Em progresso...
 
