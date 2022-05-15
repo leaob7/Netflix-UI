@@ -44,9 +44,6 @@ function MyListBody ({ myList }) {
           }
         </Grid>
 
-
-
-
     </Grid>
   )
 }
